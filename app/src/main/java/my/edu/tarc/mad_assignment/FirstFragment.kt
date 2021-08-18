@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import my.edu.tarc.mad_assignment.databinding.FragmentFirstBinding
+import androidx.appcompat.app.AppCompatActivity
+
+
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -28,6 +32,19 @@ class FirstFragment : Fragment() {
         return binding.root
 
     }
+
+
+    /*@Override
+    public onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
