@@ -28,13 +28,13 @@
         app:layout_constraintStart_toStartOf="@+id/txtreferral"
         app:layout_constraintTop_toBottomOf="@+id/txtreferral" />
 
-    <ImageView
-        android:id="@+id/imgtest"
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtreferral"
-        app:layout_constraintEnd_toEndOf="@+id/txtreferral"
-        app:layout_constraintStart_toStartOf="@+id/txtreferral"
-        tools:src="@tools:sample/avatars" />
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="142dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
