@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/MainpageFragment"
+        android:name="my.edu.tarc.mad_assignment.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_MainpageFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_MainpageFragment_to_newApplicationFragment"
+            app:destination="@id/newApplicationFragment" />
+        <action
+            android:id="@+id/action_MainpageFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_MainpageFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_MainpageFragment_to_referralFragment"
+            app:destination="@id/referralFragment" />
+        <action
+            android:id="@+id/action_MainpageFragment_to_rewardFragment"
+            app:destination="@id/rewardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="my.edu.tarc.mad_assignment.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+        <action
+            android:id="@+id/action_LoginFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_forgetPWFragment"
+            app:destination="@id/forgetPWFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPWFragment"
+        android:name="my.edu.tarc.mad_assignment.ForgetPWFragment"
+        android:label="fragment_forget_p_w"
+        tools:layout="@layout/fragment_forget_p_w" >
+        <action
+            android:id="@+id/action_forgetPWFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="my.edu.tarc.mad_assignment.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newApplicationFragment"
+        android:name="my.edu.tarc.mad_assignment.NewApplicationFragment"
+        android:label="fragment_new_application"
+        tools:layout="@layout/fragment_new_application" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="my.edu.tarc.mad_assignment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="my.edu.tarc.mad_assignment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/referralFragment"
+        android:name="my.edu.tarc.mad_assignment.ReferralFragment"
+        android:label="fragment_referral"
+        tools:layout="@layout/fragment_referral" />
+    <fragment
+        android:id="@+id/rewardFragment"
+        android:name="my.edu.tarc.mad_assignment.RewardFragment"
+        android:label="fragment_reward"
+        tools:layout="@layout/fragment_reward" />
+</navigation>
