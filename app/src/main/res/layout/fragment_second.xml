@@ -7,13 +7,26 @@
     tools:context=".SecondFragment">
 
     <TextView
-        android:id="@+id/textview_second"
+        android:id="@+id/txt4getPW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="forget"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Register"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/txt4getPW"
+        app:layout_constraintStart_toStartOf="@+id/txt4getPW"
+        app:layout_constraintTop_toBottomOf="@+id/txt4getPW" />
 
     <Button
         android:id="@+id/button_second"
@@ -23,5 +36,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+        app:layout_constraintTop_toBottomOf="@id/txt4getPW" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,25 +66,45 @@
         android:id="@+id/newApplicationFragment"
         android:name="my.edu.tarc.mad_assignment.NewApplicationFragment"
         android:label="fragment_new_application"
-        tools:layout="@layout/fragment_new_application" />
+        tools:layout="@layout/fragment_new_application" >
+        <action
+            android:id="@+id/action_newApplicationFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/paymentFragment"
         android:name="my.edu.tarc.mad_assignment.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="my.edu.tarc.mad_assignment.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/referralFragment"
         android:name="my.edu.tarc.mad_assignment.ReferralFragment"
         android:label="fragment_referral"
-        tools:layout="@layout/fragment_referral" />
+        tools:layout="@layout/fragment_referral" >
+        <action
+            android:id="@+id/action_referralFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/rewardFragment"
         android:name="my.edu.tarc.mad_assignment.RewardFragment"
         android:label="fragment_reward"
-        tools:layout="@layout/fragment_reward" />
+        tools:layout="@layout/fragment_reward" >
+        <action
+            android:id="@+id/action_rewardFragment_to_MainpageFragment"
+            app:destination="@id/MainpageFragment" />
+    </fragment>
 </navigation>

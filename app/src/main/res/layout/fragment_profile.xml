@@ -9,13 +9,23 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtMyProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="@string/myProfile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/previous"
+        app:layout_constraintEnd_toEndOf="@+id/txtMyProfile"
+        app:layout_constraintStart_toStartOf="@+id/txtMyProfile"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

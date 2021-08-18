@@ -35,6 +35,12 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_MainpageFragment)
         }
+        binding.txt4getPW.setOnClickListener {
+            findNavController().navigate(R.id.action_LoginFragment_to_forgetPWFragment)
+        }
+        binding.txtReg.setOnClickListener {
+            findNavController().navigate(R.id.action_LoginFragment_to_registerFragment)
+        }
     }
 
     override fun onDestroyView() {

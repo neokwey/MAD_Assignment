@@ -9,13 +9,23 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/txtreward"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="@string/reward"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonReward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/previous"
+        app:layout_constraintEnd_toEndOf="@+id/txtreward"
+        app:layout_constraintStart_toStartOf="@+id/txtreward"
+        app:layout_constraintTop_toBottomOf="@+id/txtreward" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
