@@ -48,7 +48,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         binding.layLogout.setOnClickListener {
             findNavController().navigate(R.id.action_MainpageFragment_to_LoginFragment)
         }

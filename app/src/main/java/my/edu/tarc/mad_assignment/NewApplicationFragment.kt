@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import my.edu.tarc.mad_assignment.databinding.FragmentNewApplicationBinding
 import my.edu.tarc.mad_assignment.databinding.FragmentRegisterBinding
@@ -27,6 +28,7 @@ class NewApplicationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         binding.buttonNewApply.setOnClickListener {
             findNavController().navigate(R.id.action_newApplicationFragment_to_MainpageFragment)
         }

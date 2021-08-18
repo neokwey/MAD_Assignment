@@ -2,10 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CA36E3"
     tools:context=".FirstFragment">
+    <!--android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"-->
 
     <TextView
         android:id="@+id/txtDashboard"
@@ -24,14 +26,12 @@
         android:layout_width="156dp"
         android:layout_height="155dp"
         android:layout_marginTop="40dp"
-        android:background="#CA36E3"
         app:layout_constraintEnd_toEndOf="@+id/txtDashboard"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/txtDashboard"
         app:layout_constraintTop_toBottomOf="@+id/txtDashboard"
         app:shapeAppearanceOverlay="@style/Circular"
-        tools:ignore="ImageContrastCheck"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@drawable/neo" />
 
     <TextView
         android:id="@+id/txtName"

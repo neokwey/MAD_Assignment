@@ -15,7 +15,11 @@
     <string name="referral">Referral</string>
     <string name="payment">Payment</string>
     <string name="myProfile">My Profile</string>
+    <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="forgetPW">Forget Password</string>
+    <string name="reg">Register</string>
+    <string name="car_info">Vehicle Info</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
