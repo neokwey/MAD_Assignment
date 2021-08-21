@@ -29,9 +29,9 @@ class NewApplicationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        binding.buttonNewApply.setOnClickListener {
+       /* binding.buttonNewApply.setOnClickListener {
             findNavController().navigate(R.id.action_newApplicationFragment_to_MainpageFragment)
-        }
+        }*/
     }
 
     companion object {

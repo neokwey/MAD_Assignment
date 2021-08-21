@@ -21,7 +21,15 @@
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_reward.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/content_main.xml" value="0.4" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_forget_p_w.xml" value="0.264" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_new_application.xml" value="0.2" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_register.xml" value="0.264" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_reward.xml" value="0.1" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.264" />
       </map>
     </option>
   </component>
@@ -30,5 +38,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
