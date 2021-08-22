@@ -18,4 +18,19 @@
     <string name="reg">Register</string>
     <string name="reward">Reward</string>
 
+    <string-array name="state_list">
+        <item>State</item>
+        <item>Kedah</item>
+        <item>Johor</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Pahang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+
+    </string-array>
+
 </resources>

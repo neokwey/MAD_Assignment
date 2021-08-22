@@ -3,6 +3,7 @@ package my.edu.tarc.mad_assignment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
@@ -69,6 +70,8 @@ class FirstFragment : Fragment() {
         }
 
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
