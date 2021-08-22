@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/LoginFragment">
+    app:startDestination="@id/MainpageFragment">
 
     <fragment
         android:id="@+id/MainpageFragment"
@@ -24,7 +24,8 @@
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_MainpageFragment_to_referralFragment"
-            app:destination="@id/referralFragment" />
+            app:destination="@id/referralFragment"
+            app:popUpTo="@id/MainpageFragment" />
         <action
             android:id="@+id/action_MainpageFragment_to_rewardFragment"
             app:destination="@id/rewardFragment" />
