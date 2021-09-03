@@ -9,13 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import my.edu.tarc.mad_assignment.databinding.FragmentFirstBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 
-
-
-
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -23,6 +18,7 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val vehicleViewModel: VehicleViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +46,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+        /*var username: String = "c1"
+        vehicleViewModel.select(username)*/
         binding.layLogout.setOnClickListener {
             findNavController().navigate(R.id.action_MainpageFragment_to_LoginFragment)
         }

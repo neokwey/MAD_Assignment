@@ -1,5 +1,6 @@
 package my.edu.tarc.mad_assignment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
 import my.edu.tarc.mad_assignment.databinding.FragmentNewApplicationBinding
 import my.edu.tarc.mad_assignment.databinding.FragmentRegisterBinding
 
@@ -15,6 +18,7 @@ class NewApplicationFragment : Fragment() {
     private var _binding: FragmentNewApplicationBinding? = null
     private val binding get() = _binding!!
     private val vehicleViewModel: VehicleViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +35,21 @@ class NewApplicationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        val vehicleAdapter = RecyclerAdapter()
-        vehicleAdapter.setVehicle(vehicleViewModel.vehicles)
-        binding.listViewVehicle.adapter = vehicleAdapter
+        binding.fabAdd.setOnClickListener {
+            val intent = Intent(activity, Vehicle_add::class.java)
+            startActivity(intent)
+        }
+/*val adapter = RecyclerAdapter()
 
-        /*binding.buttonNewApply.setOnClickListener {
-            findNavController().navigate(R.id.action_newApplicationFragment_to_MainpageFragment)
-        }*/
+//adapter.setVehicle(vehicleViewModel.vehicles)
+
+var username: String = "c1"
+vehicleViewModel.select(username)
+
+//vehicleViewModel.
+
+binding.listViewVehicle.adapter = adapter
+*/
     }
 
     companion object {

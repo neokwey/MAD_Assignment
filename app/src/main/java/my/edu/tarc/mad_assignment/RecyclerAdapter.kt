@@ -4,10 +4,8 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 //val context:Context, val vehicles: List<Vehicle>
@@ -17,11 +15,12 @@ class RecyclerAdapter internal constructor(): RecyclerView.Adapter<RecyclerAdapt
     private var vehicles = ArrayList<Vehicle>()
 
     internal fun setVehicle(vehicle: ArrayList<Vehicle>){
-        vehicles = vehicle
+        this.vehicles = vehicle
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.add_vehicle, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.vehicle_show, parent, false)
         return ViewHolder(v)
     }
 

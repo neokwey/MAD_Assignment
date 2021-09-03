@@ -32,5 +32,37 @@
         <item>Selangor</item>
 
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="newVehicle">New Vehicle</string>
+    <string name="vehicleDetail">Vehicle Detail</string>
+    <string name="name">Name</string>
+    <string name="identity">Identity Type</string>
+    <string name="insurance_type">Insurance type</string>
+    <string name="phoneNum">Phone Number</string>
+    <string name="title_activity_add_car">Add_car</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model Name</string>
+    <string name="plateNum">Plate Number</string>
+    <string name="year">Year</string>
+    <string name="cc">CC</string>
+    <string name="type">Type</string>
+    <string name="choosePhoto">Choose photos of the vehicle</string>
+    <string name="back">Back</string>
+    <string name="front">Front</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="choosepicture">Choose A Photo</string>
+    <string name="vehicleBrand">Vehicle Brand</string>
+    <string name="cc1">1.0 CC</string>
+    <string name="vehicleModelName">Vehicle Model Name</string>
+    <string name="auto_mannual">Auto/Mannual</string>
+    <string name="save">Save</string>
 
 </resources>

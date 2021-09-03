@@ -2,7 +2,8 @@
   "project_info": {
     "project_number": "131181736849",
     "project_id": "mad-assignment-56b04",
-    "storage_bucket": "mad-assignment-56b04.appspot.com"
+    "storage_bucket": "mad-assignment-56b04.appspot.com",
+    "firebase_url": "https://mad-assignment-56b04-default-rtdb.firebaseio.com"
   },
   "client": [
     {
