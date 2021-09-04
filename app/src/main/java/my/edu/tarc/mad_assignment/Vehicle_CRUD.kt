@@ -29,15 +29,15 @@ class Vehicle_CRUD internal constructor() {
 
                     for (start in 0 until count){
                         if (start >= 0) {
-                            val f_url: String? = snapshot.child("front url").getValue().toString()
-                            val b_url: String? = snapshot.child("back url").getValue().toString()
-                            val l_url: String? = snapshot.child("left url").getValue().toString()
-                            val r_url: String? = snapshot.child("right url").getValue().toString()
-                            val car_brand: String? = snapshot.child("car brand").getValue().toString()
-                            val car_cc_type: String? = snapshot.child("car cc_type").getValue().toString()
-                            val car_name: String? = snapshot.child("car name").getValue().toString()
-                            val car_plate: String? = snapshot.child("car plate").getValue().toString()
-                            val car_year: String? = snapshot.child("car year").getValue().toString()
+                            /*val f_url: String = snapshot.child("front url").getValue().toString()
+                            val b_url: String = snapshot.child("back url").getValue().toString()
+                            val l_url: String = snapshot.child("left url").getValue().toString()
+                            val r_url: String = snapshot.child("right url").getValue().toString()
+                            val car_brand: String = snapshot.child("car brand").getValue().toString()
+                            val car_cc_type: String = snapshot.child("car cc_type").getValue().toString()
+                            val car_name: String = snapshot.child("car name").getValue().toString()
+                            val car_plate: String = snapshot.child("car plate").getValue().toString()
+                            val car_year: String = snapshot.child("car year").getValue().toString()*/
 
 //                            vehicleView.retriveVehicle(Vehicle(b_url,f_url,l_url,r_url,car_cc_type,car_brand,car_name,car_year,car_plate))
                         }

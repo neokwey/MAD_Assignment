@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import my.edu.tarc.mad_assignment.databinding.FragmentNewApplicationBinding
-import my.edu.tarc.mad_assignment.databinding.FragmentRegisterBinding
+//import my.edu.tarc.mad_assignment.databinding.FragmentRegisterBinding
 
 class NewApplicationFragment : Fragment() {
     private var _binding: FragmentNewApplicationBinding? = null

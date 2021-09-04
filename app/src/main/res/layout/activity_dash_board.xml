@@ -2,29 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CA36E3"
-    tools:context=".FirstFragment">
-    <!--android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"-->
+    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+    tools:context=".DashBoardActivity">
 
     <TextView
         android:id="@+id/txtDashboard"
-        android:layout_width="236dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="197dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
         android:text="@string/dashboard"
         android:textColor="#FFFFFF"
-        android:textSize="48sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgProfile"
-        android:layout_width="155dp"
-        android:layout_height="155dp"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="@+id/txtDashboard"
         app:layout_constraintStart_toStartOf="@+id/txtDashboard"
@@ -36,9 +35,9 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:textColor="#ffffff"
-        android:textSize="32sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/imgProfile"
         app:layout_constraintStart_toStartOf="@+id/imgProfile"
         app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
@@ -46,7 +45,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btm_background_light_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +75,8 @@
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -87,8 +86,8 @@
 
                         <ImageView
                             android:id="@+id/imgApplication"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
+                            android:layout_width="46dp"
+                            android:layout_height="52dp"
                             android:src="@drawable/application"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                             app:layout_constraintEnd_toEndOf="@+id/imageView3"
@@ -120,8 +119,8 @@
 
                         <ImageView
                             android:id="@+id/imageView4"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -131,8 +130,8 @@
 
                         <ImageView
                             android:id="@+id/imgReward"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
+                            android:layout_width="46dp"
+                            android:layout_height="52dp"
                             android:src="@drawable/rewards"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                             app:layout_constraintEnd_toEndOf="@+id/imageView4"
@@ -164,8 +163,8 @@
 
                         <ImageView
                             android:id="@+id/imageView5"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -175,8 +174,8 @@
 
                         <ImageView
                             android:id="@+id/imgReferral"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
+                            android:layout_width="46dp"
+                            android:layout_height="52dp"
                             android:src="@drawable/referral"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                             app:layout_constraintEnd_toEndOf="@+id/imageView5"
@@ -214,8 +213,8 @@
 
                         <ImageView
                             android:id="@+id/imageView6"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -225,8 +224,8 @@
 
                         <ImageView
                             android:id="@+id/imgPayment"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
+                            android:layout_width="46dp"
+                            android:layout_height="52dp"
                             android:src="@drawable/payment"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                             app:layout_constraintEnd_toEndOf="@+id/imageView6"
@@ -258,8 +257,8 @@
 
                         <ImageView
                             android:id="@+id/imageView7"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -269,9 +268,9 @@
 
                         <ImageView
                             android:id="@+id/imgmyProfile"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
-                            android:src="@drawable/login"
+                            android:layout_width="44dp"
+                            android:layout_height="52dp"
+                            android:src="@drawable/profile"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintEnd_toEndOf="@+id/imageView7"
                             app:layout_constraintStart_toStartOf="@+id/imageView7"
@@ -302,8 +301,8 @@
 
                         <ImageView
                             android:id="@+id/imageView8"
-                            android:layout_width="73dp"
-                            android:layout_height="85dp"
+                            android:layout_width="68dp"
+                            android:layout_height="80dp"
                             android:layout_margin="8dp"
                             android:src="@drawable/circle_purple"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -313,8 +312,8 @@
 
                         <ImageView
                             android:id="@+id/imgLouout"
-                            android:layout_width="51dp"
-                            android:layout_height="57dp"
+                            android:layout_width="46dp"
+                            android:layout_height="52dp"
                             android:src="@drawable/logout"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                             app:layout_constraintEnd_toEndOf="@+id/imageView8"
@@ -332,7 +331,7 @@
                         android:textSize="18sp" />
                 </LinearLayout>
             </TableRow>
-
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

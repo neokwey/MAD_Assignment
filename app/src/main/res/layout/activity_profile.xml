@@ -2,14 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/txtMyProfile"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/myProfile"
@@ -17,15 +15,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/previous"
-        app:layout_constraintEnd_toEndOf="@+id/txtMyProfile"
-        app:layout_constraintStart_toStartOf="@+id/txtMyProfile"
-        app:layout_constraintTop_toBottomOf="@+id/txtMyProfile" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ class Vehicle_add : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle_add)
         supportActionBar?.setTitle("New Vehicle")
-        mAuth = FirebaseAuth.getInstance()
+        /*mAuth = FirebaseAuth.getInstance()
 
         binding.btnBack.setOnClickListener {
 
@@ -37,17 +37,17 @@ class Vehicle_add : AppCompatActivity() {
 
         binding.btnSave.setOnClickListener {
             registerVehicle()
-        }
+        }*/
 
     }
 
     private fun registerVehicle(){
-        val vehiclebrand: String = binding?.etxtBrand?.text.toString()
-        val vehiclecc: String = binding?.etxtCC?.text.toString()
-        val vehiclemodelName: String = binding?.etxtModel?.text.toString()
-        val vehicleplatenum: String = binding?.etxtPlatenum?.text.toString()
-        val vehicletype: String = binding?.etxtType?.text.toString()
-        val vehicleyear: String = binding?.etxtYear?.text.toString()
+        val vehiclebrand: String = binding.etxtBrand.text.toString()
+        val vehiclecc: String = binding.etxtCC.text.toString()
+        val vehiclemodelName: String = binding.etxtModel.text.toString()
+        val vehicleplatenum: String = binding.etxtPlatenum.text.toString()
+        val vehicletype: String = binding.etxtType.text.toString()
+        val vehicleyear: String = binding.etxtYear.text.toString()
 
         if (vehiclebrand==""){
             Toast.makeText(this, "Please fill in the Vehicle brand.", Toast.LENGTH_LONG).show()

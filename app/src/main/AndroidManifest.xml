@@ -12,6 +12,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MAD_Assignment">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="true"
+            android:label="@string/myProfile"
+            android:parentActivityName=".DashBoardActivity"></activity>
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true"
+            android:label="@string/payment"
+            android:parentActivityName=".DashBoardActivity"></activity>
+        <activity
+            android:name=".RewardActivity"
+            android:exported="true"
+            android:label="@string/reward"
+            android:parentActivityName=".DashBoardActivity"></activity>
+        <activity
+            android:name=".ReferralActivity"
+            android:exported="true"
+            android:label="@string/referral"
+            android:parentActivityName=".DashBoardActivity"></activity>
+        <activity
+            android:name=".DashBoardActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".ForgetPWActivity"
+            android:exported="true"
+            android:label="@string/forgetPW"
+            android:parentActivityName=".LoginActivity"></activity>
+        <activity
+            android:name=".RegisterUserActivity"
+            android:exported="true"
+            android:label="@string/reg"
+            android:parentActivityName=".LoginActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Vehicle_add"
             android:exported="true" />
         <activity
@@ -19,11 +63,14 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MAD_Assignment.NoActionBar">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
 
         <meta-data
