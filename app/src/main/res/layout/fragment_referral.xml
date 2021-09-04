@@ -5,44 +5,69 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
     tools:context=".ReferralFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/txtreferral"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="referral"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/textView3"
+        android:layout_width="192dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="140dp"
+        android:text="Your Referral Code : "
+        android:textAlignment="center"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCode"
+        android:layout_width="207dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="140dp"
+        android:text="ABCDE"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="398dp"
+        android:layout_height="248dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="177dp"
+        android:paddingLeft="50dp"
+        android:text="@string/terms"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/buttonReferral"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/previous"
-        app:layout_constraintEnd_toEndOf="@+id/txtreferral"
-        app:layout_constraintStart_toStartOf="@+id/txtreferral"
-        app:layout_constraintTop_toBottomOf="@+id/txtreferral" />
+        android:layout_marginStart="2dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgtest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtreferral"
-        app:layout_constraintEnd_toEndOf="@+id/txtreferral"
-        app:layout_constraintStart_toStartOf="@+id/txtreferral"
-        tools:src="@tools:sample/avatars" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="225dp" />
-
+    <Button
+        android:id="@+id/buttonCopy"
+        android:layout_width="401dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="Copy Your Code"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

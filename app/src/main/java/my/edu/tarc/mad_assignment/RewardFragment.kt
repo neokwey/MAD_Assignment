@@ -28,9 +28,9 @@ class RewardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonReward.setOnClickListener {
+        /*binding.buttonReward.setOnClickListener {
             findNavController().navigate(R.id.action_rewardFragment_to_MainpageFragment)
-        }
+        }*/
     }
 
     companion object {
