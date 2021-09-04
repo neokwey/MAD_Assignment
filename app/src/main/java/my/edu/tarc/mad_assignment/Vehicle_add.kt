@@ -1,72 +1,68 @@
 package my.edu.tarc.mad_assignment
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import my.edu.tarc.mad_assignment.databinding.FragmentRegisterBinding
+import my.edu.tarc.mad_assignment.databinding.ActivityVehicleAddBinding
 
-
-class RegisterFragment : Fragment() {
-    private var _binding: FragmentRegisterBinding? = null
-
-    private val binding get() = _binding!!
+class Vehicle_add : AppCompatActivity() {
+    private lateinit var binding: ActivityVehicleAddBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
-
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_vehicle_add)
+        supportActionBar?.setTitle("New Vehicle")
         mAuth = FirebaseAuth.getInstance()
 
+        binding.btnBack.setOnClickListener {
 
+        }
+
+        binding.btnFront.setOnClickListener {
+
+        }
+
+        binding.btnLeft.setOnClickListener {
+
+        }
+
+        binding.btnRight.setOnClickListener {
+
+        }
+
+        binding.btnSave.setOnClickListener {
+            registerVehicle()
+        }
 
     }
 
-    private fun registerUser() {
-        val username: String = binding?.txtUserName?.text.toString()
-        val email: String = binding.txtEmail.text.toString()
-        val password: String = binding.txtPass.text.toString()
-        val repass: String = binding.txtConPass.text.toString()
-        val phone : String = binding.txtPhone.text.toString()
-        val state :String = binding.spinState.getSelectedItem().toString()
-        val address : String = binding.txtAddress.text.toString()
+    private fun registerVehicle(){
+        val vehiclebrand: String = binding?.etxtBrand?.text.toString()
+        val vehiclecc: String = binding?.etxtCC?.text.toString()
+        val vehiclemodelName: String = binding?.etxtModel?.text.toString()
+        val vehicleplatenum: String = binding?.etxtPlatenum?.text.toString()
+        val vehicletype: String = binding?.etxtType?.text.toString()
+        val vehicleyear: String = binding?.etxtYear?.text.toString()
 
-
-        if(username .equals("")){
-
-            Toast.makeText(activity, "Please insert username.", Toast.LENGTH_LONG).show()
-
-
-
-        }
-        else if (email == ""){
-            Toast.makeText(activity, "Please insert email.", Toast.LENGTH_LONG).show()
-
-
-        }
-        else if(password == "")
-
-        {
-            Toast.makeText(activity, "Please insert password.", Toast.LENGTH_LONG).show()
-        }
-        else if(!repass.equals(password)){
-            Toast.makeText(activity, "Password not match.", Toast.LENGTH_LONG).show()
-
-        }
-        else{
+        if (vehiclebrand==""){
+            Toast.makeText(this, "Please fill in the Vehicle brand.", Toast.LENGTH_LONG).show()
+        }else if (vehiclecc==""){
+            Toast.makeText(this, "Please fill in the CC.", Toast.LENGTH_LONG).show()
+        }else if (vehiclemodelName==""){
+            Toast.makeText(this, "Please fill in the Model Name.", Toast.LENGTH_LONG).show()
+        }else if (vehicleplatenum==""){
+            Toast.makeText(this, "Please fill in the Plate Number.", Toast.LENGTH_LONG).show()
+        }else if (vehicletype==""){
+            Toast.makeText(this, "Please fill in the Vehicle type.", Toast.LENGTH_LONG).show()
+        }else if (vehicleyear==""){
+            Toast.makeText(this, "Please fill in the Vehicle year.", Toast.LENGTH_LONG).show()
+        }else{
+            /*
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                 task ->
                 if(task.isSuccessful){
@@ -102,37 +98,7 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(activity, "Error Message:" + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
 
                 }
-            }
-        }
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mAuth = FirebaseAuth.getInstance()
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        binding.buttonReg.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_LoginFragment)
-        }
-
-        binding.btnRegister.setOnClickListener{
-
-            registerUser()
+            }*/
         }
     }
-
-    companion object {
-
-    }
-
-
-
 }
