@@ -9,6 +9,19 @@
     tools:context=".DashBoardActivity">
 
     <TextView
+        android:id="@+id/txtName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Welcome,"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgProfile"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+    <TextView
         android:id="@+id/txtDashboard"
         android:layout_width="197dp"
         android:layout_height="54dp"
@@ -24,7 +37,7 @@
         android:id="@+id/imgProfile"
         android:layout_width="145dp"
         android:layout_height="145dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/txtDashboard"
         app:layout_constraintStart_toStartOf="@+id/txtDashboard"
         app:layout_constraintTop_toBottomOf="@+id/txtDashboard"
@@ -35,12 +48,12 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="290dp"
         android:textColor="#ffffff"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/imgProfile"
         app:layout_constraintStart_toStartOf="@+id/imgProfile"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -311,7 +324,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imgLouout"
+                            android:id="@+id/imgLogout"
                             android:layout_width="46dp"
                             android:layout_height="52dp"
                             android:src="@drawable/logout"
