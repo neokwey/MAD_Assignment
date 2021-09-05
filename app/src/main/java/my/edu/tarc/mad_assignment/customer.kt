@@ -2,7 +2,7 @@ package my.edu.tarc.mad_assignment
 
 class customer {
     private var uid: String = ""
-    private var username: String = ""
+    private var name: String = ""
     private var password: String = ""
     private var profile: String = ""
     private var status: String = ""
@@ -14,7 +14,7 @@ class customer {
     constructor()
     constructor(
         uid: String,
-        username: String,
+        name: String,
         password: String,
         profile: String,
         status: String,
@@ -24,7 +24,7 @@ class customer {
         address: String
     ) {
         this.uid = uid
-        this.username = username
+        this.name = name
         this.password = password
         this.profile = profile
         this.status = status
@@ -42,11 +42,11 @@ class customer {
         this.uid = uid
 
     }
-    fun getUsername(): String?{
-        return username
+    fun getname(): String?{
+        return name
     }
-    fun setUsername(username: String){
-        this.username = username
+    fun setname(name: String){
+        this.name = name
 
     }
     fun getProfile(): String?{

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="my.edu.tarc.mad_assignment">
+    package="my.edu.tarc.mad_assignment" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -10,45 +12,50 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MAD_Assignment">
+        android:theme="@style/Theme.MAD_Assignment" >
+        <activity
+            android:name=".NewApplicationActivity"
+            android:exported="true"
+            android:label="Vehicle list"
+            android:parentActivityName=".DashBoardActivity"/>
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
             android:label="@string/myProfile"
-            android:parentActivityName=".DashBoardActivity"></activity>
+            android:parentActivityName=".DashBoardActivity" />
         <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:label="@string/payment"
-            android:parentActivityName=".DashBoardActivity"></activity>
+            android:parentActivityName=".DashBoardActivity" />
         <activity
             android:name=".RewardActivity"
             android:exported="true"
             android:label="@string/reward"
-            android:parentActivityName=".DashBoardActivity"></activity>
+            android:parentActivityName=".DashBoardActivity" />
         <activity
             android:name=".ReferralActivity"
             android:exported="true"
             android:label="@string/referral"
-            android:parentActivityName=".DashBoardActivity"></activity>
+            android:parentActivityName=".DashBoardActivity" />
         <activity
             android:name=".DashBoardActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ForgetPWActivity"
             android:exported="true"
             android:label="@string/forgetPW"
-            android:parentActivityName=".LoginActivity"></activity>
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".RegisterUserActivity"
             android:exported="true"
             android:label="@string/reg"
-            android:parentActivityName=".LoginActivity"></activity>
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,20 +64,13 @@
         </activity>
         <activity
             android:name=".Vehicle_add"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Vehicle Details"
+            android:parentActivityName=".DashBoardActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MAD_Assignment.NoActionBar">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            android:theme="@style/Theme.MAD_Assignment.NoActionBar" >
         </activity>
 
         <meta-data

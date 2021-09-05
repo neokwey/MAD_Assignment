@@ -26,11 +26,11 @@ class RecyclerAdapter internal constructor(): RecyclerView.Adapter<RecyclerAdapt
 
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
         //vehicles.get(position)
-        holder.itemPlatenum.text = vehicles[position].plate_num
-        val bitmap = BitmapFactory.decodeFile(vehicles[position].b_url)
+        holder.itemPlatenum.text = vehicles[position].getPlate_num()
+        val bitmap = BitmapFactory.decodeFile(vehicles[position].getbUrl())
         holder.itemImage.setImageBitmap(bitmap)
         holder.itemView.setOnClickListener {
-            Toast.makeText(it.context, "Car Plate: " + vehicles[position].plate_num, Toast.LENGTH_SHORT).show()
+            Toast.makeText(it.context, "Car Plate: " + vehicles[position].getPlate_num(), Toast.LENGTH_SHORT).show()
         }
     }
 

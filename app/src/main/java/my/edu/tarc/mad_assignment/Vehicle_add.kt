@@ -1,22 +1,37 @@
 package my.edu.tarc.mad_assignment
 
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import my.edu.tarc.mad_assignment.databinding.ActivityNewApplicationBinding
 import my.edu.tarc.mad_assignment.databinding.ActivityVehicleAddBinding
+import java.util.jar.Manifest
 
 class Vehicle_add : AppCompatActivity() {
     private lateinit var binding: ActivityVehicleAddBinding
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var refUsers: DatabaseReference
-    private var firebaseUserID : String = ""
+    var refUsers: DatabaseReference?= null
+    var database: DatabaseReference?= null
+    var firebaseUser : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle_add)
-        supportActionBar?.setTitle("New Vehicle")
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_baseline_close_24)
+        binding =  ActivityVehicleAddBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("vehicle")
+
+
+
         /*mAuth = FirebaseAuth.getInstance()
 
         binding.btnBack.setOnClickListener {
@@ -33,35 +48,72 @@ class Vehicle_add : AppCompatActivity() {
 
         binding.btnRight.setOnClickListener {
 
-        }
+        }*/
 
         binding.btnSave.setOnClickListener {
             registerVehicle()
-        }*/
+        }
+
+        binding.imgFront.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this@Vehicle_add, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                selectImage()
+            }else {
+                //ActivityCompat.requestPermissions(this@Vehicle_add, String{android.Manifest.permission.READ_EXTERNAL_STORAGE})
+            }
+        }
+
+    }
+
+    private fun selectImage() {
 
     }
 
     private fun registerVehicle(){
-        val vehiclebrand: String = binding.etxtBrand.text.toString()
-        val vehiclecc: String = binding.etxtCC.text.toString()
-        val vehiclemodelName: String = binding.etxtModel.text.toString()
-        val vehicleplatenum: String = binding.etxtPlatenum.text.toString()
-        val vehicletype: String = binding.etxtType.text.toString()
-        val vehicleyear: String = binding.etxtYear.text.toString()
+        refUsers!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    var count: Int = snapshot.childrenCount.toInt()
+                    var newID: Int = count + 1
+                    val carID: String = "car$newID"
+                    val vehiclebrand: String = binding.etxtBrand.text.toString()
+                    val vehiclecc: String = binding.etxtCC.text.toString()
+                    val vehiclemodelName: String = binding.etxtModel.text.toString()
+                    val vehicleplatenum: String = binding.etxtPlatenum.text.toString()
+                    val vehicletype: String = binding.etxtType.text.toString()
+                    val vehicleyear: String = binding.etxtYear.text.toString()
+                    if (vehiclebrand==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the Vehicle brand.", Toast.LENGTH_SHORT).show()
+                    }else if (vehiclecc==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the CC.", Toast.LENGTH_LONG).show()
+                    }else if (vehiclemodelName==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the Model Name.", Toast.LENGTH_LONG).show()
+                    }else if (vehicleplatenum==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the Plate Number.", Toast.LENGTH_LONG).show()
+                    }else if (vehicletype==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the Vehicle type.", Toast.LENGTH_LONG).show()
+                    }else if (vehicleyear==""){
+                        Toast.makeText(this@Vehicle_add, "Please fill in the Vehicle year.", Toast.LENGTH_LONG).show()
+                    }else{
+                        val carVehicle = Vehicle("https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/car_back.jpg?alt=media&token=7c6d6aed-5498-4fce-8870-71726fc91ffb",vehiclebrand,vehiclecc,vehiclemodelName,vehicleplatenum,vehicletype,vehicleyear,"https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/car_back.jpg?alt=media&token=7c6d6aed-5498-4fce-8870-71726fc91ffb","https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/car_back.jpg?alt=media&token=7c6d6aed-5498-4fce-8870-71726fc91ffb","https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/car_back.jpg?alt=media&token=7c6d6aed-5498-4fce-8870-71726fc91ffb")
+                        refUsers!!.child(carID).setValue(carVehicle).addOnSuccessListener {
+                            binding.etxtBrand.text.clear()
+                            binding.etxtCC.text.clear()
+                            binding.etxtModel.text.clear()
+                            binding.etxtPlatenum.text.clear()
+                            binding.etxtType.text.clear()
+                            binding.etxtYear.text.clear()
+                            Toast.makeText(this@Vehicle_add, " Vehicle added successfully.", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this@Vehicle_add, " Failed to add vehicle.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
 
-        if (vehiclebrand==""){
-            Toast.makeText(this, "Please fill in the Vehicle brand.", Toast.LENGTH_LONG).show()
-        }else if (vehiclecc==""){
-            Toast.makeText(this, "Please fill in the CC.", Toast.LENGTH_LONG).show()
-        }else if (vehiclemodelName==""){
-            Toast.makeText(this, "Please fill in the Model Name.", Toast.LENGTH_LONG).show()
-        }else if (vehicleplatenum==""){
-            Toast.makeText(this, "Please fill in the Plate Number.", Toast.LENGTH_LONG).show()
-        }else if (vehicletype==""){
-            Toast.makeText(this, "Please fill in the Vehicle type.", Toast.LENGTH_LONG).show()
-        }else if (vehicleyear==""){
-            Toast.makeText(this, "Please fill in the Vehicle year.", Toast.LENGTH_LONG).show()
-        }else{
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
             /*
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                 task ->
@@ -99,6 +151,6 @@ class Vehicle_add : AppCompatActivity() {
 
                 }
             }*/
-        }
+
     }
 }

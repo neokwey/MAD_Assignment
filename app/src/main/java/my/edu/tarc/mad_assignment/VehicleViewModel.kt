@@ -1,3 +1,4 @@
+/*
 package my.edu.tarc.mad_assignment
 
 import androidx.lifecycle.LiveData
@@ -13,9 +14,11 @@ abstract class VehicleViewModel: ViewModel() {
         vehicles = ArrayList<Vehicle>()
     }
 
-    /*fun retriveVehicle(vehicle: Vehicle){
+    */
+/*fun retriveVehicle(vehicle: Vehicle){
         vehicles.add(vehicle)qeertyuioop[
-    }*/
+    }*//*
+
 
     fun select(username: String){
 
@@ -61,4 +64,4 @@ abstract class VehicleViewModel: ViewModel() {
         })
     }
 
-}
+}*/

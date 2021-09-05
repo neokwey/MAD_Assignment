@@ -5,9 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewApplicationFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".NewApplicationActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listViewVehicle"
