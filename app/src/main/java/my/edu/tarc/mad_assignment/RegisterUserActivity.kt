@@ -68,6 +68,10 @@ class RegisterUserActivity : AppCompatActivity() {
         {
             Toast.makeText(this@RegisterUserActivity, "Please insert email.", Toast.LENGTH_LONG).show()
         }
+        else if(phone.length<10||phone.length>11)
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please insert the correct format of phone Number.", Toast.LENGTH_LONG).show()
+        }
         else if(phone=="")
         {
             Toast.makeText(this@RegisterUserActivity, "Please insert Phone Number.", Toast.LENGTH_LONG).show()
