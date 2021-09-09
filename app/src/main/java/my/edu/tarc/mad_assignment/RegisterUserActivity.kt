@@ -8,6 +8,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import my.edu.tarc.mad_assignment.databinding.*
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.ktx.actionCodeSettings
+
 
 class RegisterUserActivity : AppCompatActivity() {
     //private lateinit var binding: ActivityMainBinding
@@ -15,6 +20,7 @@ class RegisterUserActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID : String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +31,10 @@ class RegisterUserActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         binding.btnRegister.setOnClickListener{
+
+
             registerUser()
+
         }
     }
 
@@ -39,28 +48,43 @@ class RegisterUserActivity : AppCompatActivity() {
         val state :String = binding.spinState.getSelectedItem().toString()
         val address : String = binding.txtAddress.text.toString()
 
-
-        if(name .equals("")){
-
+        if(name==""&&password==""&&email==""&&email==""&&phone==""&&address=="")
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please fill in the detail", Toast.LENGTH_LONG).show()
+        }
+        else if(name=="")
+        {
             Toast.makeText(this@RegisterUserActivity, "Please insert your name.", Toast.LENGTH_LONG).show()
-
-
-
         }
-        else if (email == ""){
-            Toast.makeText(this@RegisterUserActivity, "Please insert email.", Toast.LENGTH_LONG).show()
-
-
-        }
-        else if(password == "")
-
+        else if(password=="")
         {
             Toast.makeText(this@RegisterUserActivity, "Please insert password.", Toast.LENGTH_LONG).show()
         }
-        else if(!repass.equals(password)){
+        else if(!repass.equals(password))
+        {
             Toast.makeText(this@RegisterUserActivity, "Password not match.", Toast.LENGTH_LONG).show()
-
         }
+        else if (email=="")
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please insert email.", Toast.LENGTH_LONG).show()
+        }
+        else if(phone.length<10||phone.length>11)
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please insert the correct format of phone Number.", Toast.LENGTH_LONG).show()
+        }
+        else if(phone=="")
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please insert Phone Number.", Toast.LENGTH_LONG).show()
+        }
+        else if(binding.spinState.selectedItemPosition==0)
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please select state.", Toast.LENGTH_LONG).show()
+        }
+        else if(address=="")
+        {
+            Toast.makeText(this@RegisterUserActivity, "Please insert your address", Toast.LENGTH_LONG).show()
+        }
+
         else{
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                     task ->
@@ -77,7 +101,19 @@ class RegisterUserActivity : AppCompatActivity() {
                     userHashMap["address"] = address
                     userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/avatar.jpg?alt=media&token=63ce9acb-32a4-4a0c-80e7-cf410e29f2d3"
                     userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
+
                     userHashMap["status"] = "offline"
+
+                    mAuth.currentUser?.sendEmailVerification()
+                        ?.addOnCompleteListener { task ->
+                            if(task.isSuccessful){
+
+                                Toast.makeText(this@RegisterUserActivity,"Register Successfull, Please verify your email to login.", Toast.LENGTH_LONG).show()
+
+                            }
+
+
+                        }
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener {
@@ -97,4 +133,6 @@ class RegisterUserActivity : AppCompatActivity() {
         }
 
     }
+
+
 }

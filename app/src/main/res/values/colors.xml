@@ -15,4 +15,6 @@
     <color name="dialog_delete_yes_btn_txt_color">#3D3D3D</color>
     <color name="dialog_delete_yes_btn_bg">#cecece</color>
     <color name="statusBarColor">#211500</color>
+    <color name="amountText">#CA6749</color>
+    <color name="red">#FF0000</color>
 </resources>
