@@ -10,6 +10,7 @@ class customer {
     private var phone: String = ""
     private var state: String = ""
     private var address: String = ""
+    private 
 
     constructor()
     constructor(
@@ -40,7 +41,6 @@ class customer {
     }
     fun setUID(uid: String){
         this.uid = uid
-
     }
     fun getname(): String?{
         return name

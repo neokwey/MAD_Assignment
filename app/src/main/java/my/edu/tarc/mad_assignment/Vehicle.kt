@@ -1,118 +1,127 @@
 package my.edu.tarc.mad_assignment
 
 class Vehicle {
-    private var b_url: String = ""
+    private var bUrl: String = ""
     private var brand: String = ""
-    private var CC: String = ""
+    private var carID: String = ""
+    private var carType: String = ""
+    private var carYear: String = ""
     private var carname: String = ""
-    private var car_plate: String = ""
-    private var car_type: String = ""
-    private var caryear: String = ""
-    private var f_url: String = ""
-    private var l_url: String = ""
-    private var r_url: String = ""
+    private var cc: String = ""
+    private var fUrl: String = ""
+    private var lUrl: String = ""
+    private var plate_num: String = ""
+    private var rUrl: String = ""
 
     constructor()
-    constructor(b_url: String, brand: String, CC: String, carname: String, car_plate: String, car_type: String, caryear: String, f_url: String, l_url: String, r_url: String) {
-        this.b_url = b_url
+    constructor(bUrl: String, brand: String, carID: String, carType: String, carYear: String, carname: String, cc: String, fUrl: String, lUrl: String, plate_num: String, rUrl: String) {
+        this.bUrl = bUrl
         this.brand = brand
-        this.CC = CC
+        this.carID = carID
+        this.cc = cc
         this.carname = carname
-        this.car_plate = car_plate
-        this.car_type = car_type
-        this.caryear = caryear
-        this.f_url = f_url
-        this.l_url = l_url
-        this.r_url = r_url
+        this.plate_num = plate_num
+        this.carType = carType
+        this.carYear = carYear
+        this.fUrl = fUrl
+        this.lUrl = lUrl
+        this.rUrl = rUrl
     }
 
     fun getbUrl(): String?{
-        return b_url
-
+        return bUrl
     }
-    fun setbUrl(b_url: String){
-        this.b_url = b_url
-
+    fun setbUrl(bUrl: String){
+        this.bUrl = bUrl
     }
 
-    fun getBrand(): String?{
+    fun getbrand(): String?{
         return brand
 
     }
-    fun setBrand(brand: String){
+    fun setbrand(brand: String){
         this.brand = brand
 
     }
 
-    fun getCC(): String?{
-        return CC
+    fun getcarID(): String?{
+        return carID
 
     }
-    fun setCC(CC: String){
-        this.CC = CC
-
-    }
-
-    fun getCarname(): String?{
-        return carname
-
-    }
-    fun setCarname(carname: String){
-        this.carname = carname
-
-    }
-
-    fun getPlate_num(): String?{
-        return car_plate
-
-    }
-    fun setPlate_num(plate_num: String){
-        this.car_plate = plate_num
+    fun setcarID(carID: String){
+        this.carID = carID
 
     }
 
     fun getcarType(): String?{
-        return car_type
+        return carType
 
     }
-    fun setcarType(car_type: String){
-        this.car_type = car_type
+    fun setcarType(carType: String){
+        this.carType = carType
 
     }
 
     fun getcarYear(): String?{
-        return caryear
+        return carYear
 
     }
-    fun setcarYear(caryear: String){
-        this.caryear = caryear
+    fun setcarYear(carYear: String){
+        this.carYear = carYear
+
+    }
+
+    fun getcarname(): String?{
+        return carname
+
+    }
+    fun setcarname(carname: String){
+        this.carname = carname
+
+    }
+
+    fun getcc(): String?{
+        return cc
+
+    }
+    fun setcc(cc: String){
+        this.cc = cc
 
     }
 
     fun getfUrl(): String?{
-        return f_url
+        return fUrl
 
     }
-    fun setfUrl(f_url: String){
-        this.f_url = f_url
+    fun setfUrl(fUrl: String){
+        this.fUrl = fUrl
 
     }
 
     fun getlUrl(): String?{
-        return l_url
+        return lUrl
 
     }
-    fun setlUrl(l_url: String){
-        this.l_url = l_url
+    fun setlUrl(lUrl: String){
+        this.lUrl = lUrl
+
+    }
+
+    fun getplate_num(): String?{
+        return plate_num
+
+    }
+    fun setplate_num(plate_num: String){
+        this.plate_num = plate_num
 
     }
 
     fun getrUrl(): String?{
-        return r_url
+        return rUrl
 
     }
-    fun setrUrl(r_url: String){
-        this.r_url = r_url
+    fun setrUrl(rUrl: String){
+        this.rUrl = rUrl
 
     }
 

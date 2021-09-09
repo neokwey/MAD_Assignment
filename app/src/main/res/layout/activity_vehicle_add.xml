@@ -257,7 +257,7 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="16dp"
-                    android:background="@android:drawable/ic_menu_add"
+                    android:src="@android:drawable/ic_menu_add"
                     app:layout_constraintBottom_toBottomOf="@+id/textView8"
                     app:layout_constraintStart_toEndOf="@+id/textView8"
                     app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -267,7 +267,7 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="16dp"
-                    android:background="@android:drawable/ic_menu_add"
+                    android:src="@android:drawable/ic_menu_add"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/textView9" />
@@ -277,7 +277,7 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="16dp"
-                    android:background="@android:drawable/ic_menu_add"
+                    android:src="@android:drawable/ic_menu_add"
                     app:layout_constraintBottom_toBottomOf="@+id/textView11"
                     app:layout_constraintStart_toEndOf="@+id/textView11"
                     app:layout_constraintTop_toTopOf="@+id/textView11" />
@@ -287,10 +287,19 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="16dp"
-                    android:background="@android:drawable/ic_menu_add"
+                    android:src="@android:drawable/ic_menu_add"
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgRight"
+                    app:layout_constraintStart_toStartOf="@+id/imgRight"
+                    app:layout_constraintTop_toBottomOf="@+id/imgRight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
