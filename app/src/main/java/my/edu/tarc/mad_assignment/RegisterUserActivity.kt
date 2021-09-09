@@ -8,6 +8,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import my.edu.tarc.mad_assignment.databinding.*
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.ktx.actionCodeSettings
+
 
 class RegisterUserActivity : AppCompatActivity() {
     //private lateinit var binding: ActivityMainBinding
@@ -15,6 +20,7 @@ class RegisterUserActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID : String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +31,10 @@ class RegisterUserActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         binding.btnRegister.setOnClickListener{
+
+
             registerUser()
+
         }
     }
 
@@ -88,7 +97,19 @@ class RegisterUserActivity : AppCompatActivity() {
                     userHashMap["address"] = address
                     userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/avatar.jpg?alt=media&token=63ce9acb-32a4-4a0c-80e7-cf410e29f2d3"
                     userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
+
                     userHashMap["status"] = "offline"
+
+                    mAuth.currentUser?.sendEmailVerification()
+                        ?.addOnCompleteListener { task ->
+                            if(task.isSuccessful){
+
+                                Toast.makeText(this@RegisterUserActivity,"Register Successfull, Please verify your email to login.", Toast.LENGTH_LONG).show()
+
+                            }
+
+
+                        }
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener {
@@ -108,4 +129,6 @@ class RegisterUserActivity : AppCompatActivity() {
         }
 
     }
+
+
 }
