@@ -30,6 +30,10 @@
         <item>Sabah</item>
         <item>Sarawak</item>
         <item>Selangor</item>
+        <item>Penang</item>
+        <item>Terengganu</item>
+        <item>Selangor</item>
+        <item>Negeri Sembilan</item>
 
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
@@ -64,5 +68,29 @@
     <string name="vehicleModelName">Vehicle Model Name</string>
     <string name="auto_mannual">Auto/Mannual</string>
     <string name="save">Save</string>
+
+    <string name="pay">Pay</string>
+    <string name="paymentMethod">Payment Method</string>
+    <string name="makePayment">Make Payment</string>
+    <string name="payableAmount">Total Payable Amount</string>
+    <string name="totalPayment">Total Payment</string>
+    <string name="download">Download</string>
+    <string-array name="peymentMethod_list">
+        <item>Credit/Debit Card</item>
+        <item>Pay at 7-Eleven</item>
+    </string-array>
+    <string name="cardPay">Credit/Debit Card</string>
+    <string name="seven_eleven">Pay at 7-Eleven</string>
+    <string name="qr_code">qr_code</string>
+    <string name="information">Enter your info</string>
+    <string name="generate_qr_code">Generate QR Code</string>
+    <string name="transactionId">Transaction ID</string>
+    <string name="offPayTerm">Show this payment slip at any 7-Eleven Counter and pay the total payable amount in cash.</string>
+    <string name="enterCard">Please enter your card number</string>
+    <string name="monthYear">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="cardHint">xxxx xxxx xxxx xxxx</string>
+    <string name="cvvHint">xxx</string>
+
 
 </resources>

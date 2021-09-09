@@ -1,9 +1,11 @@
 package my.edu.tarc.mad_assignment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import my.edu.tarc.mad_assignment.databinding.ActivityPaymentBinding
-import my.edu.tarc.mad_assignment.databinding.ActivityRewardBinding
+
 
 class PaymentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentBinding
@@ -16,5 +18,16 @@ class PaymentActivity : AppCompatActivity() {
         //change to other activity
         /*val intent = Intent(this, ?Activity::class.java)
         startActivity(intent)*/
+
+        binding.btnMakePayment.setOnClickListener {
+            if(binding.radioButton1.isChecked){
+                val intent = Intent(this, CardPaymentActivity::class.java)
+                startActivity(intent)
+
+            }else{
+                val intent = Intent(this, OfflinePaymentActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }
