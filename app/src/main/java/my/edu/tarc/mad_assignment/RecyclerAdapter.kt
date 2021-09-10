@@ -1,8 +1,11 @@
 package my.edu.tarc.mad_assignment
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -57,14 +60,46 @@ class RecyclerAdapter(private val context: android.content.Context, private val 
                         holder.itemLess2.setOnClickListener {
                             holder.itembtnRenew.visibility = View.GONE
                         }
-                        holder.itemExpDate.text = snapshot.child("expiredDate").getValue().toString()
+                        holder.itemExpDate.text = "Expired Date: " + snapshot.child("expiredDate").getValue().toString()
                         //val count = snapshot.child("count").getValue()
+                        holder.itembtnRenew.setOnClickListener {
+                            //call dialog
 
+                            //retrive from db n calculation
+
+                            //get data n update to db
+
+                            //cancel btn
+
+                        }
 
                     } else {
                         holder.itembtnNew.visibility = View.VISIBLE
                         holder.itemLess1.setOnClickListener {
                             holder.itembtnNew.visibility = View.GONE
+                        }
+                        holder.itembtnNew.setOnClickListener {
+                            //call dialog
+                            val mDialog = LayoutInflater.from(context).inflate(R.layout.reg_insurance_dialog, null)
+                            val mBuilder = AlertDialog.Builder(context)
+                                .setView(mDialog)
+                                .setTitle("Insurance Form")
+                                .show()
+
+                            //val mAlertDialog = mBuilder.show()
+                            //this.let { Dialog(it) }
+                            //retrive from db n calculation
+
+                            //confirm btn --> get data n update to db
+
+                            /*setOnClickListener {
+                                Toast.makeText(it.context, "Confirm", Toast.LENGTH_SHORT).show()
+                                mAlertDialog.dismiss()
+                            }
+                            //cancel btn
+                            holder.itemCancel.setOnClickListener {
+                                mAlertDialog.dismiss()
+                            }*/
                         }
                     }
                 }
