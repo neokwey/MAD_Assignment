@@ -91,7 +91,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textViewTerms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -108,7 +108,7 @@
                     android:layout_marginTop="40dp"
                     android:text="@string/choosePhoto"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTerms" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -246,10 +246,10 @@
                     android:ems="10"
                     android:inputType="numberDecimal"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewTerms"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="@+id/textView6"
+                    app:layout_constraintTop_toTopOf="@+id/textViewTerms"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView

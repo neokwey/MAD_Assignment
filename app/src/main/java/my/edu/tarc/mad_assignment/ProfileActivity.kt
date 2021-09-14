@@ -40,14 +40,7 @@ class ProfileActivity : AppCompatActivity() {
                     binding.txtState1.setText(user!!.getState())
                     binding.txtName1.setText(user!!.getname())
                     binding.txtAddress1.setText(user!!.getAddress())
-
-
-
-
-
                 }
-
-
             }
 
             override fun onCancelled(error: DatabaseError) {

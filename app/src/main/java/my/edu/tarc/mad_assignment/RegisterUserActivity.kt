@@ -1,12 +1,12 @@
 package my.edu.tarc.mad_assignment
 
 import android.content.Intent
+import android.icu.number.Precision.increment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import my.edu.tarc.mad_assignment.databinding.*
 
 class RegisterUserActivity : AppCompatActivity() {
@@ -15,6 +15,7 @@ class RegisterUserActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID : String = ""
+    val firebase : DatabaseReference =  FirebaseDatabase.getInstance().getReference("customer")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +24,61 @@ class RegisterUserActivity : AppCompatActivity() {
         binding =  ActivityRegisterUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mAuth = FirebaseAuth.getInstance()
-
-        binding.btnRegister.setOnClickListener{
-            registerUser()
-        }
     }
 
+    fun registerOnclick(view: android.view.View) {
+        var referralCode : String = randomCode()
+        Toast.makeText(this, referralCode, Toast.LENGTH_SHORT).show()
+        val query : Query = firebase.orderByChild("referralCode").equalTo(referralCode)
 
-    private fun registerUser() {
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+               if(snapshot.exists()){
+                   registerOnclick(binding.btnRegister)
+               }
+                else{
+                   registerUser(referralCode)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    private fun referralPoints(){
+        val query : Query = firebase.orderByChild("referralCode").equalTo(binding.editTextReferral.text.toString())
+
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    for ( ds : DataSnapshot in snapshot.children){
+                        val key = ds.key.toString()
+                        firebase.child(key).child("rewards").child("points").get().addOnSuccessListener {
+                            var currentPoints = it.value.toString().toInt()
+                            firebase.child(key).child("rewards").child("points").setValue(currentPoints + 10)
+                        }
+                    }
+                }
+                else{
+                    Toast.makeText(this@RegisterUserActivity,"Referral user not exist!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    private fun randomCode(): String = List(6) {
+        (('A'..'Z') + ('0'..'9')).random()
+    }.joinToString("")
+
+    private fun registerUser(referralCode : String) {
         val name: String = binding.txtName.text.toString()
         val email: String = binding.txtEmail.text.toString()
         val password: String = binding.txtPass.text.toString()
@@ -89,7 +137,13 @@ class RegisterUserActivity : AppCompatActivity() {
                     userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/avatar.jpg?alt=media&token=63ce9acb-32a4-4a0c-80e7-cf410e29f2d3"
                     userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
                     userHashMap["status"] = "offline"
+                    userHashMap["referralCode"] = referralCode
 
+                    if (binding.editTextReferral.text!=null){
+                        referralPoints()
+                    }
+
+                    firebase.child(firebaseUserID).child("rewards").child("points").setValue(0)
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener {
                                 task2 ->

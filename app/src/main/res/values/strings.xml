@@ -25,13 +25,20 @@
         <item>Kelantan</item>
         <item>Malacca</item>
         <item>Pahang</item>
+        <item>Penang</item>
         <item>Perak</item>
         <item>Perlis</item>
         <item>Sabah</item>
         <item>Sarawak</item>
         <item>Selangor</item>
-
     </string-array>
+
+    <string-array name="TnC">
+        <item>1. Referral Code is unique and not shareable with others.</item>
+        <item>2. All rewards are not able to share with others.</item>
+        <item>3. Referral rewards must be use before expiry date.</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newVehicle">New Vehicle</string>
@@ -64,5 +71,6 @@
     <string name="vehicleModelName">Vehicle Model Name</string>
     <string name="auto_mannual">Auto/Mannual</string>
     <string name="save">Save</string>
+    <string name="title_activity_rewards">RewardsActivity</string>
 
 </resources>

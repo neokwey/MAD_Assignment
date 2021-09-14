@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
         val email: String = binding.txtEmail1.text.toString()
         val password: String = binding.txtPass1.text.toString()
 
-
         if (email == ""){
             Toast.makeText(this@LoginActivity, "Please insert email.", Toast.LENGTH_LONG).show()
         } else if(password == "") {
