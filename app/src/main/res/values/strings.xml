@@ -40,6 +40,7 @@
         <item>Kelantan</item>
         <item>Malacca</item>
         <item>Pahang</item>
+        <item>Penang</item>
         <item>Perak</item>
         <item>Perlis</item>
         <item>Sabah</item>
@@ -49,6 +50,12 @@
         <item>Terengganu</item>
         <item>Selangor</item>
         <item>Negeri Sembilan</item>
+
+        <string-array name="TnC">
+            <item>1. Referral Code is unique and not shareable with others.</item>
+            <item>2. All rewards are not able to share with others.</item>
+            <item>3. Referral rewards must be use before expiry date.</item>
+        </string-array>
 
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
