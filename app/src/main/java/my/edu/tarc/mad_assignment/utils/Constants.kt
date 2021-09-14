@@ -1,0 +1,14 @@
+package my.edu.tarc.mad_assignment.utils
+
+object Constants {
+    const val REQUEST_PERMISSIONS_REQUEST_CODE_READ_EXTERNAL_STORAGE = 1
+    const val REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA = 2
+    const val REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA2 = 3
+    const val REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA3 = 4
+    const val REQUEST_PERMISSIONS_REQUEST_CODE_CAMERA4 = 5
+    const val REQUEST_PHOTO_FROM_GALLERY = 6
+    const val REQUEST_PHOTO_FROM_GALLERY2 = 7
+    const val REQUEST_PHOTO_FROM_GALLERY3 = 8
+    const val REQUEST_PHOTO_FROM_GALLERY4 = 9
+    const val REQUEST_CODE = "RequestCode"
+}

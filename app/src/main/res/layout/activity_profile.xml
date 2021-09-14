@@ -38,7 +38,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Phone"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail1" />
@@ -86,10 +86,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:text="Customer ID:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile2" />
 
     <TextView
         android:id="@+id/textView13"
@@ -145,25 +145,19 @@
         android:id="@+id/txtID"
         android:layout_width="282dp"
         android:layout_height="42dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile2" />
 
-    <TextView
-        android:id="@+id/textView19"
+    <ImageView
+        android:id="@+id/imageProfile2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/teal_200"
-        android:gravity="center"
-        android:text="Profile"
-        android:textColor="#ffffff"
-        android:textSize="60sp"
+        android:layout_height="127dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:srcCompat="@drawable/login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

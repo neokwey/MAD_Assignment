@@ -1,18 +1,28 @@
 package my.edu.tarc.mad_assignment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import my.edu.tarc.mad_assignment.databinding.ActivityDashBoardBinding
+import kotlinx.coroutines.selects.select
 import my.edu.tarc.mad_assignment.databinding.ActivityNewApplicationBinding
+import java.util.*
 
 class NewApplicationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewApplicationBinding
-    //var refUsers: DatabaseReference?= null
-    //var firebaseUser : FirebaseUser? = null
+    private lateinit var vehicleList: ArrayList<Vehicle>
+    private lateinit var recyclerView: RecyclerView
+    var refUsers: DatabaseReference?= null
+    var firebaseUser : FirebaseUser? = null
+    lateinit var db: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,29 +30,50 @@ class NewApplicationActivity : AppCompatActivity() {
         binding =  ActivityNewApplicationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //firebaseUser = FirebaseAuth.getInstance().currentUser
-        //refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("vehicle")
 
-        /*refUsers!!.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var count: Int = snapshot.childrenCount.toInt()
-                var carID: String = ""
-                for (i in 0 until count){
-                    if (i < 100){
-                        carID = "car[$i+1]"
-                    }
-
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })*/
+        recyclerView = findViewById(R.id.listViewVehicle)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        vehicleList = arrayListOf<Vehicle>()
+        select()
 
         binding.fabAdd.setOnClickListener {
             val intent = Intent(this, Vehicle_add::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun select(){
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
+        refUsers!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val user: customer? = snapshot.getValue(customer::class.java)
+                    var uid: String = user!!.getUID().toString()
+                    db = FirebaseDatabase.getInstance().reference.child("customer").child(uid).child("vehicle")
+                    db.addValueEventListener(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()){
+                                for (vehicleSnapshot in snapshot.children){
+                                    val vehicle = vehicleSnapshot.getValue(Vehicle::class.java)
+                                    vehicleList.add(vehicle!!)
+                                }
+                                recyclerView.adapter = RecyclerAdapter(this@NewApplicationActivity, vehicleList)
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+
+                        }
+                    })
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+
     }
 }
