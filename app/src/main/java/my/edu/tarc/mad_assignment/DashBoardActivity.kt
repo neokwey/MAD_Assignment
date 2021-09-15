@@ -80,8 +80,14 @@ class DashBoardActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
-            onDestroy()
+            finish()
             refUsers!!.child("status").setValue("Offline")
+        }
+
+        binding.imgContact.setOnClickListener{
+            val intent = Intent(this,ContactUs::class.java)
+            startActivity(intent)
+
         }
     }
 }

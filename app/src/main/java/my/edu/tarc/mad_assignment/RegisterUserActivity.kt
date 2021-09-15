@@ -28,7 +28,6 @@ class RegisterUserActivity : AppCompatActivity() {
 
     fun registerOnclick(view: android.view.View) {
         var referralCode : String = randomCode()
-        Toast.makeText(this, referralCode, Toast.LENGTH_SHORT).show()
         val query : Query = firebase.orderByChild("referralCode").equalTo(referralCode)
 
         query.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -40,7 +39,6 @@ class RegisterUserActivity : AppCompatActivity() {
                    registerUser(referralCode)
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
 
             }

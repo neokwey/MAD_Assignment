@@ -41,14 +41,10 @@ class RewardActivity : AppCompatActivity() {
         firebase.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
-                    Toast.makeText(this@RewardActivity,"Good", Toast.LENGTH_SHORT).show()
                     for(voucherSnapshot in snapshot.children){
                         val vouchers = voucherSnapshot.getValue(Voucher::class.java)
                         voucherArrayList.add(vouchers!!)
                     }
-                }
-                else{
-                    Toast.makeText(this@RewardActivity,"Failed", Toast.LENGTH_SHORT).show()
                 }
                 voucherRecyclerView.adapter = VoucherAdapter(voucherArrayList, userUID.toString(), txtPoints)
             }
