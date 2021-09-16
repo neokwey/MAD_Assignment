@@ -58,31 +58,32 @@
 
         <LinearLayout
             android:id="@+id/id_camera_ll"
-            android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:focusable="true">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/id_camera_img"
-                android:layout_height="48dp"
                 android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/camera"
                 app:srcCompat="@drawable/ic_camera" />
 
             <TextView
                 android:id="@+id/tv_camera"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingTop="8dp"
                 android:text="@string/camera"
-                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
