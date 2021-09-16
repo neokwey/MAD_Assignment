@@ -46,20 +46,28 @@ class VoucherAdapter (private val voucherList : ArrayList<Voucher>, userUID : St
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (snapshot.hasChild(voucherList[index].voucherID!!)){
                                 voucherRef.child(voucherList[index].voucherID!!).child("quantity").get().addOnSuccessListener {
-                                    var qty = it.value.toString().toInt()
-
-                                    qty++
-
-                                    voucherRef.child(voucherList[index].voucherID!!).child("quantity").setValue(qty.toString())
                                     firebase.child(userUID).child("rewards").child("points").get().addOnSuccessListener {
                                         var updatePoint = it.value.toString().toInt()
                                         updatePoint-=voucherPoints
                                         firebase.child(userUID).child("rewards").child("points").setValue(updatePoint.toString())
                                         txtPoints.text = "$updatePoint"
                                     }
+
+                                    var qty = it.value.toString().toInt()
+
+                                    qty++
+
+                                    voucherRef.child(voucherList[index].voucherID!!).child("quantity").setValue(qty.toString())
                                 }
                             }
                             else{
+                                firebase.child(userUID).child("rewards").child("points").get().addOnSuccessListener {
+                                    var updatePoint = it.value.toString().toInt()
+                                    updatePoint-=voucherPoints
+                                    firebase.child(userUID).child("rewards").child("points").setValue(updatePoint.toString())
+                                    txtPoints.text = "$updatePoint"
+                                }
+
                                 voucherRef.child(voucherList[index].voucherID!!).child("quantity").setValue("1")
                             }
                         }
