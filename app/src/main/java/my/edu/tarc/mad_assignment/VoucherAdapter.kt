@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import my.edu.tarc.mad_assignment.databinding.ActivityRewardBinding
 import org.w3c.dom.Text
 import kotlin.properties.Delegates
 
