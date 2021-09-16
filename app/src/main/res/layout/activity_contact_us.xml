@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,15 +36,16 @@
 
         <ImageView
             android:id="@+id/imageViewAddress"
-            android:layout_width="61dp"
-            android:layout_height="63dp"
-            android:scaleType="fitXY"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:onClick="googleMaps"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="@+id/imageView11"
             app:layout_constraintEnd_toEndOf="@+id/imageView11"
             app:layout_constraintStart_toStartOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="@+id/imageView11"
-            app:srcCompat="@drawable/location" />
+            app:srcCompat="@drawable/location"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -52,6 +53,7 @@
         android:layout_width="265dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="28dp"
         android:gravity="left|center_vertical"
         android:onClick="googleMaps"
         android:text="@string/address"
@@ -59,7 +61,6 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
 
@@ -73,26 +74,29 @@
 
         <ImageView
             android:id="@+id/imageView14"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="parent"
             app:srcCompat="@drawable/circle_purple" />
 
         <ImageView
             android:id="@+id/imageViewPhone"
-            android:layout_width="57dp"
-            android:layout_height="63dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:onClick="phoneCall"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+            app:layout_constraintEnd_toEndOf="@+id/imageView14"
+            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView14"
             app:layout_constraintTop_toTopOf="@+id/imageView14"
-            app:srcCompat="@drawable/telephone" />
+            app:layout_constraintVertical_bias="parent"
+            app:srcCompat="@drawable/telephone"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -100,14 +104,14 @@
         android:layout_width="272dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="21dp"
         android:gravity="left|center_vertical"
-        android:text="@string/phone"
         android:onClick="phoneCall"
+        android:text="@string/phone"
         android:textColor="#03A9F4"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout3"
         app:layout_constraintVertical_bias="0.0" />
@@ -122,26 +126,27 @@
 
         <ImageView
             android:id="@+id/imageView18"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="parent"
             app:srcCompat="@drawable/circle_purple" />
 
         <ImageView
             android:id="@+id/imageView19"
-            android:layout_width="57dp"
-            android:layout_height="63dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:onClick="emailIntent"
             app:layout_constraintBottom_toBottomOf="@+id/imageView18"
             app:layout_constraintEnd_toEndOf="@+id/imageView18"
             app:layout_constraintStart_toStartOf="@+id/imageView18"
             app:layout_constraintTop_toTopOf="@+id/imageView18"
-            app:srcCompat="@drawable/email" />
+            app:srcCompat="@drawable/email"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -149,12 +154,14 @@
         android:layout_width="272dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="21dp"
         android:gravity="left|center_vertical"
         android:onClick="emailIntent"
         android:text="@string/email"
         android:textColor="#03A9F4"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4"
         app:layout_constraintVertical_bias="0.804" />
