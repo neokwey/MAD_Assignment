@@ -54,9 +54,6 @@ class PaymentActivity : AppCompatActivity() {
 
         voucherList= arrayListOf<PaymentVoucher>()
 
-
-
-
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
         refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("voucherUsed")
         refUsers!!.addValueEventListener(object : ValueEventListener {
@@ -64,8 +61,8 @@ class PaymentActivity : AppCompatActivity() {
                 if(snapshot.exists())
                 {
                     discount = snapshot.child("amountDiscount").getValue().toString().toDouble()
+                    discount = snapshot.child("amountDiscount").getValue().toString().toDouble()
                     binding.textViewTotalAmountPayment.setText(totalAmount.toString())
-                    binding.textDiscountPayment.setText(discount.toString())
                     totalPay = totalAmount - discount
                     val total = String.format("%.2f", totalPay)
                     binding.textViewToPayPayment.text =  total
@@ -117,7 +114,7 @@ class PaymentActivity : AppCompatActivity() {
                     intent.putExtra("toPay",total)
                     startActivity(intent)
                 }else if(binding.radioButton2.isChecked){
-                    updateVoucherqQty()
+                    //updateVoucherqQty()
                     val intent = Intent(this@PaymentActivity, OfflinePay::class.java)
                     intent.putExtra("transID",id)
                     intent.putExtra("toPay",total)
@@ -167,7 +164,7 @@ class PaymentActivity : AppCompatActivity() {
                         })
                     }
                     //Toast.makeText(this@PaymentActivity,quantityList.toString(),Toast.LENGTH_SHORT).show()
-                    voucherRecycleView.adapter = PaymentVoucherAdapter(voucherList,binding.linearVoucher)
+                    voucherRecycleView.adapter = PaymentVoucherAdapter(voucherList,binding.linearVoucher, binding.textDiscountPayment)
                 }
             }
 

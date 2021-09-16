@@ -12,10 +12,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 class PaymentVoucherAdapter(
-    private val voucherList: ArrayList<PaymentVoucher>, private val layout: LinearLayout
+    private val voucherList: ArrayList<PaymentVoucher>, private val layout: LinearLayout, txtDiscount : TextView
 ) : RecyclerView.Adapter<PaymentVoucherAdapter.MyViewHolder>() {
     private lateinit var refUsers: DatabaseReference
     private lateinit var firebaseUser : FirebaseUser
+    val txtDiscount = txtDiscount
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,6 +41,9 @@ class PaymentVoucherAdapter(
                     refUsers.child("voucherUsed").child("amountDiscount").setValue(currentItem.discountAmount)
                     refUsers.child("voucherUsed").child("voucherId").setValue(currentItem.vouncherID)
 
+                    refUsers.child("voucherUsed").child("amountDiscount").get().addOnSuccessListener {
+                        txtDiscount.text = it.value.toString()
+                    }
 
                     layout.visibility = View.GONE
                     voucherList.clear()
