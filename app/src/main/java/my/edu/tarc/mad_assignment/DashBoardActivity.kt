@@ -38,6 +38,7 @@ class DashBoardActivity : AppCompatActivity() {
                     Picasso.get().load(user.getProfile()).into(binding.imgProfile)
                     refUsers!!.child("status").setValue("Online")
 
+
                 }else{
                     refUsers!!.child("status").setValue("Offline")
                 }
