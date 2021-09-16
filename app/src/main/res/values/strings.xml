@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MAD_Assignment</string>
+    <string name="app_name">MyBee Corp</string>
     <string name="action_settings">Settings</string>
     <string name="APP_DATA" translatable="false">APP_DATA</string>
     <string name="profile_path" translatable="false">profile_path</string>
