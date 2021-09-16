@@ -108,6 +108,8 @@
     <string name="cardHint">xxxx xxxx xxxx xxxx</string>
     <string name="cvvHint">xxx</string>
     <string name="confirm">CONFIRM</string>
+    <string name="marketValue">Vehicle Market Value</string>
+    <string name="ncb">NCB discount</string>
 
 
 </resources>

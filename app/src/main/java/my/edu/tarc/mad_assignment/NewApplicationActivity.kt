@@ -1,9 +1,16 @@
 package my.edu.tarc.mad_assignment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +48,7 @@ class NewApplicationActivity : AppCompatActivity() {
             val intent = Intent(this, Vehicle_add::class.java)
             startActivity(intent)
         }
+
     }
 
     private fun select(){
@@ -76,4 +84,22 @@ class NewApplicationActivity : AppCompatActivity() {
 
 
     }
+
+
+    /*override fun onCellClickListener(data: Vehicle, mode: Int) {
+        if(mode == 1){
+
+        }else if(mode == 2){
+            val builder = AlertDialog.Builder(context)
+            builder.apply {
+                setMessage("Delete contact ${data.phone} ?")
+                setPositiveButton("Delete", DialogInterface.OnClickListener { dialog, which ->
+                    myViewModel.deleteContact(data)
+                    Toast.makeText(context, "Contact deleted", Toast.LENGTH_SHORT).show()
+                })
+                setNegativeButton("Cancel", null)
+                show()
+            }
+        }
+    }*/
 }

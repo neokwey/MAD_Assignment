@@ -4,21 +4,21 @@ class insurance {
     private var carID: String = ""
     private var expiredDate: String = ""
     private var count: Int = 0
+    private var ncb: Int = 0
+    private var ncbPersentage: Double = 0.0
+    private var amount: Double = 0.0
 
     constructor()
-    constructor(carID: String, expiredDate: String, count: Int) {
+
+    constructor(carID: String, expiredDate: String, ncb: Int) {
         this.carID = carID
         this.expiredDate = expiredDate
-        this.count = count
+        this.ncb = ncb
     }
 
-    fun getcarID(): String?{
-        return carID
 
-    }
-    fun setcarID(carID: String){
-        this.carID = carID
-    }
+
+
 
     fun getexpiredDate(): String?{
         return expiredDate
@@ -28,11 +28,11 @@ class insurance {
         this.expiredDate = expiredDate
     }
 
-    fun getcount(): Int?{
-        return count
+    fun getncb(): Int?{
+        return ncb
     }
-    fun setcount(count: Int){
-        this.count = count
+    fun setncb(ncb: Int){
+        this.ncb = ncb
     }
 
 }

@@ -1,29 +1,24 @@
 package my.edu.tarc.mad_assignment
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -31,14 +26,10 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import androidx.core.content.FileProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import com.squareup.picasso.Picasso
-import my.edu.tarc.mad_assignment.R
-import my.edu.tarc.mad_assignment.databinding.ActivityNewApplicationBinding
 import my.edu.tarc.mad_assignment.databinding.ActivityVehicleAddBinding
 import my.edu.tarc.mad_assignment.utils.Constants
 import my.edu.tarc.mad_assignment.utils.FileUtils
@@ -58,6 +49,9 @@ class Vehicle_add : AppCompatActivity() {
     private lateinit var cameraLl: LinearLayout
 
     lateinit var file: File
+    lateinit var file2: File
+    lateinit var file3: File
+    lateinit var file4: File
     lateinit var imageBitmap: Bitmap
     lateinit var imageBitmap2: Bitmap
     lateinit var imageBitmap3: Bitmap
@@ -667,12 +661,12 @@ class Vehicle_add : AppCompatActivity() {
                     }
                     val extras = data.extras
                     imageBitmap2 = extras!!["data"] as Bitmap
-                    file = FileUtils.createFile(
+                    file2 = FileUtils.createFile(
                         this,
                         getString(R.string.app_name),
                         "back_car_image.png"
                     )
-                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file, imageBitmap2)
+                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file2, imageBitmap2)
                     uploadBack(this, data.data!!)
 
                     SharedPreferencesUtils.setProfilePath(this, imageLocalPath)
@@ -691,12 +685,12 @@ class Vehicle_add : AppCompatActivity() {
                     }
                     val extras = data.extras
                     imageBitmap3 = extras!!["data"] as Bitmap
-                    file = FileUtils.createFile(
+                    file3 = FileUtils.createFile(
                         this,
                         getString(R.string.app_name),
                         "left_car_image.png"
                     )
-                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file, imageBitmap3)
+                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file3, imageBitmap3)
                     uploadLeft(this, data.data!!)
 
                     SharedPreferencesUtils.setProfilePath(this, imageLocalPath)
@@ -715,14 +709,16 @@ class Vehicle_add : AppCompatActivity() {
                     }
                     val extras = data.extras
                     imageBitmap4 = extras!!["data"] as Bitmap
-                    file = FileUtils.createFile(this,
+                    file4 = FileUtils.createFile(this,
                         getString(R.string.app_name),
                         "right_car_image.png"
                     )
-                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file, imageBitmap4)
+                    val imageLocalPath = FileUtils.saveImageToInternalStorage(file4, imageBitmap4)
                     uploadRight(this, data.data!!)
 
                     SharedPreferencesUtils.setProfilePath(this, imageLocalPath)
+                    /*Glide.with(this).load(imageBitmap4!!)
+                        .into(binding.imgRight)*/
                     binding.imgRight.setImageBitmap(imageBitmap4)
                 }
             }
