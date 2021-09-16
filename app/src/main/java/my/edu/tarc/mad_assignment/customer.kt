@@ -10,6 +10,7 @@ class customer {
     private var phone: String = ""
     private var state: String = ""
     private var address: String = ""
+
     var referralCode : String = ""
     get() = field
     set(value) {field=value}
