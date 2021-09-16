@@ -5,6 +5,7 @@ class Payment {
     private var ncbPersentage: Int = 0
     private var amount: Double = 0.0
 
+
     constructor()
     constructor(amount: Double, carID: String, ncbPersentage: Int){
         this.amount = amount

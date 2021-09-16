@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MAD_Assignment</string>
+    <string name="app_name">MyBee Corp</string>
     <string name="action_settings">Settings</string>
     <string name="APP_DATA" translatable="false">APP_DATA</string>
     <string name="profile_path" translatable="false">profile_path</string>
@@ -50,6 +50,7 @@
         <item>Terengganu</item>
         <item>Selangor</item>
         <item>Negeri Sembilan</item>
+
     </string-array>
 
     <string-array name="TnC">
@@ -75,6 +76,10 @@
     <string name="identity">Identity Type</string>
     <string name="insurance_type">Insurance type</string>
     <string name="phoneNum">Phone Number</string>
+    <string name="email1">E-mail</string>
+    <string name="state">State</string>
+    <string name="address1">Address</string>
+    <string name="custID">Customer ID</string>
     <string name="title_activity_add_car">Add_car</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -124,7 +129,8 @@
     <string name="cardHint">xxxx xxxx xxxx xxxx</string>
     <string name="cvvHint">xxx</string>
     <string name="confirm">CONFIRM</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="discount">Discount</string>
+    <string name="selectVoucher">Select Voucher</string>
     <string name="marketValue">Vehicle Market Value</string>
     <string name="ncb">NCB discount</string>
 

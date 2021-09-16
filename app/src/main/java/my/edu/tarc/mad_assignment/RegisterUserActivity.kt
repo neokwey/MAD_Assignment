@@ -152,6 +152,21 @@ class RegisterUserActivity : AppCompatActivity() {
                             }
 
                         }
+
+
+                        mAuth.currentUser?.sendEmailVerification()
+                            ?.addOnCompleteListener { task ->
+                                if(task.isSuccessful){
+
+                                    Toast.makeText(this@RegisterUserActivity,"Link Successfully sent, Please verify your email to login.", Toast.LENGTH_LONG).show()
+
+                                }
+
+
+                            }
+
+
+
                 }
                 else{
                     Toast.makeText(this@RegisterUserActivity, "Error Message:" + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()

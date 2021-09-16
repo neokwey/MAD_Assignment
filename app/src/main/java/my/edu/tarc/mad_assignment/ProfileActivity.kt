@@ -74,14 +74,57 @@ class ProfileActivity : AppCompatActivity() {
         })
 
         binding.btnSave.setOnClickListener{
+            val name = binding.txtName1.text.toString()
+            val phone = binding.txtPhone1.text.toString()
+            val state = binding.txtState1.text.toString()
+            val state2 = binding.txtState1.text.toString().uppercase()
+            val address = binding.txtAddress1.text.toString()
+            var stateArray = arrayOf("KEDAH","JOHOR","KELANTAN","MALACCA","PAHANG","PERAK","PERLIS","SABAH","SARAWAK","SELANGOR","PENANG","TERENGGANU","NEGERI SEMBILAN")
 
-            refUsers!!.child("name").setValue(binding.txtName1.text.toString())
-            refUsers!!.child("email").setValue(binding.txtEmail1.text.toString())
-            refUsers!!.child("phone").setValue(binding.txtPhone1.text.toString())
-            refUsers!!.child("state").setValue(binding.txtState1.text.toString())
-            refUsers!!.child("address").setValue(binding.txtAddress1.text.toString())
 
-            Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
+            if(name==""&&phone==""&&state==""&&address=="")
+            {
+                Toast.makeText(this@ProfileActivity, "Please fill in the detail", Toast.LENGTH_LONG).show()
+            }
+            else if(name=="")
+            {
+                Toast.makeText(this@ProfileActivity, "Please insert your name.", Toast.LENGTH_LONG).show()
+            }
+            else if(phone=="")
+            {
+                Toast.makeText(this@ProfileActivity, "Please insert phone number.", Toast.LENGTH_LONG).show()
+            }
+            else if(state=="")
+            {
+                Toast.makeText(this@ProfileActivity, "Please insert state.", Toast.LENGTH_LONG).show()
+            }
+            else if(address=="")
+            {
+                Toast.makeText(this@ProfileActivity, "Please insert address.", Toast.LENGTH_LONG).show()
+            }
+            else
+            {
+               /* for(item in stateArray)
+                {*/
+
+                    if(!state2.equals("KEDAH")&&!state2.equals("JOHOR")&&!state2.equals("KELANTAN")&&!state2.equals("MALACCA")&&!state2.equals("PAHANG")
+                        &&!state2.equals("PERAK")&&!state2.equals("PERLIS")&&!state2.equals("SABAH")&&!state2.equals("SARAWAK")&&!state2.equals("SELANGOR")
+                        &&!state2.equals("PENANG")&&!state2.equals("TERENGGANU")&&!state2.equals("NEGERI SEMBILAN")) {
+                        Toast.makeText(this@ProfileActivity, "Please insert valid state.", Toast.LENGTH_LONG).show()
+                    }
+                    else {
+
+                    refUsers!!.child("name").setValue(name)
+                    refUsers!!.child("phone").setValue(phone)
+                    refUsers!!.child("state").setValue(state)
+                    refUsers!!.child("address").setValue(address)
+
+                    Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, DashBoardActivity::class.java)
+                        startActivity(intent)
+                    }
+                /*}*/
+            }
 
         }
 

@@ -25,7 +25,7 @@ class OfflinePaymentActivity : AppCompatActivity() {
 
     private lateinit var qrCodeIV: ImageView
     private lateinit var dataEdt: TextView
-    private lateinit var generateQrBtn: MaterialButton
+
 
     var bitmap : Bitmap? = null
     var qrgEnCoder : QRGEncoder? = null
@@ -37,12 +37,13 @@ class OfflinePaymentActivity : AppCompatActivity() {
         binding = ActivityOfflinePaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val randomID = Random.nextInt(1000000000)
-        binding.textViewTransactionID.text = "$randomID"
+        val transID = Random.nextInt(1000000000)
+        //val transID = intent.getStringExtra("transID")
+        binding.textViewTransactionID.text = "${transID}"
 
         //set find ID
         qrCodeIV = findViewById(R.id.imgViewQr)
-        dataEdt = findViewById(R.id.textViewTransactionID)
+       /*dataEdt = findViewById(R.id.textViewTransactionID)
 
 
 
@@ -65,7 +66,7 @@ class OfflinePaymentActivity : AppCompatActivity() {
             }catch (e: Exception)
             {
                 Log.e("Tag",e.toString())
-            }
+            }*/
 
 
 

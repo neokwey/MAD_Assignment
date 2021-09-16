@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
             ?.addOnCompleteListener { task ->
                 if(task.isSuccessful){
 
-                    Toast.makeText(this@LoginActivity,"Register Successfull, Please verify your email to login.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity,"Link Successfully sent, Please verify your email to login.", Toast.LENGTH_LONG).show()
 
                 }
 
@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginuser() {
-        val email: String = binding.txtEmail1.text.toString()
+        val email: String = binding.txtEmail2.text.toString()
         val password: String = binding.txtPass1.text.toString()
 
 
@@ -97,4 +97,5 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+
     }
