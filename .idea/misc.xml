@@ -3,14 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_contact_us.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_dash_board.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_maps.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_new_application.xml" value="0.2109375" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_referral.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_register_user.xml" value="0.33" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_reward.xml" value="0.36666666666666664" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/activity_rewards.xml" value="0.35260416666666666" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/content_main.xml" value="0.2109375" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/content_rewards.xml" value="0.2109375" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/fragment_first.xml" value="0.2109375" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.2109375" />
+        <entry key="..\:/TARUC/RSD/Y3S1/Mobile App Development/MAD_Assignment/app/src/main/res/layout/voucher_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/btm_background_light_grey.xml" value="0.3828125" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/circle_purple.xml" value="0.3828125" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/dialog_no_btn_bg.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.3828125" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/ic_gallery.xml" value="0.221875" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.22239583333333332" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/drawable/white_btn_background.xml" value="0.3828125" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/activity_dash_board.xml" value="0.33" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/activity_empty.xml" value="0.36666666666666664" />
@@ -32,8 +44,6 @@
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/add_vehicle.xml" value="0.33" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/content_add_car.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/content_main.xml" value="0.26358695652173914" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/dialog_permission_alert.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/dialog_profile_image_option.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_first.xml" value="0.23728813559322035" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_forget_p_w.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_new_application.xml" value="0.26358695652173914" />
@@ -45,11 +55,10 @@
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_vehicle_add.xml" value="0.33" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_vehicle_details.xml" value="0.34791666666666665" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/reg_insurance_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/reg_insurance_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/vehicle_show.xml" value="0.2943722943722944" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/voucher_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Neo's Desktop/AndroidStudioProjects/MAD_Assignment/app/src/main/res/xml/fileprovider.xml" value="0.1" />
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/content_main.xml" value="0.4" />
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_first.xml" value="0.1" />
@@ -59,6 +68,9 @@
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_reward.xml" value="0.1" />
         <entry key="..\:/Users/mikey/AndroidStudioProjects/MAD_Assignment/app/src/main/res/layout/fragment_second.xml" value="0.264" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MobileApp2/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MobileApp2/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/Users/mikey/AndroidStudioProjects/MobileApp2/app/src/main/res/layout/activity_register_user.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -10,7 +10,13 @@ class customer {
     private var phone: String = ""
     private var state: String = ""
     private var address: String = ""
-    private 
+    var referralCode : String = ""
+    get() = field
+    set(value) {field=value}
+
+    var points : String= ""
+    get() = field
+    set(value) {field=value}
 
     constructor()
     constructor(
@@ -22,7 +28,9 @@ class customer {
         email: String,
         phone: String,
         state: String,
-        address: String
+        address: String,
+        referralCode: String,
+        points : String
     ) {
         this.uid = uid
         this.name = name
@@ -33,6 +41,8 @@ class customer {
         this.phone = phone
         this.state = state
         this.address = address
+        this.referralCode = referralCode
+        this.points = points
     }
 
     fun getUID(): String?{
@@ -41,6 +51,7 @@ class customer {
     }
     fun setUID(uid: String){
         this.uid = uid
+
     }
     fun getname(): String?{
         return name
@@ -95,8 +106,6 @@ class customer {
     }
     fun setAddress(address: String){
         this.address = address
-
     }
-
 
 }
