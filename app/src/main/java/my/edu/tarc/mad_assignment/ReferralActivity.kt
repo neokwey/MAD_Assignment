@@ -34,9 +34,6 @@ class ReferralActivity : AppCompatActivity() {
         val code = intent.getStringExtra("code")
         binding.textViewCode.text = code
 
-        binding.buttonReferral.setOnClickListener {
-        }
-
         //change to other activity
         /*val intent = Intent(this, ?Activity::class.java)
         startActivity(intent)*/
