@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">MAD_Assignment</string>
     <string name="action_settings">Settings</string>
+    <string name="APP_DATA" translatable="false">APP_DATA</string>
+    <string name="profile_path" translatable="false">profile_path</string>
+    <string name="storage_permission_denied">Read Storage Permission was denied but it is needed for Vehicle Image.</string>
+    <string name="ok_caps">OK</string>
+    <string name="cancel_caps">CANCEL</string>
+    <string name="read_storage_permission_required">Read Storage Permission</string>
+    <string name="settings_caps">SETTINGS</string>
+    <string name="camera_permission">Camera Permission</string>
+    <string name="camera_permission_denied">Camera Permission was denied but it is needed for Vehicle Image.</string>
+    <string name="camera">Camera</string>
+    <string name="remove">Remove</string>
+    <string name="gallery">Gallery</string>
+    <string name="yes_remove">Yes, Remove</string>
+    <string name="no_don_t">No, Don\'t</string>
+
     <!-- Strings used for testing -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -25,6 +40,7 @@
         <item>Kelantan</item>
         <item>Malacca</item>
         <item>Pahang</item>
+        <item>Penang</item>
         <item>Perak</item>
         <item>Perlis</item>
         <item>Sabah</item>
@@ -34,8 +50,23 @@
         <item>Terengganu</item>
         <item>Selangor</item>
         <item>Negeri Sembilan</item>
-
     </string-array>
+
+    <string-array name="TnC">
+        <item>1. Referral Code is unique and not shareable with others.</item>
+        <item>2. All rewards are not able to share with others.</item>
+        <item>3. Referral rewards must be use before expiry date.</item>
+    </string-array>
+
+    <string name="address"><u>Jalan Genting Kelang, Setapak, <br />
+                                53300 Kuala Lumpur, <br />
+        P.O. Box 10979, 50932 Kuala Lumpur, Malaysia.</u>
+        </string>
+
+    <string name="phone"><u>(6)03-41450123</u></string>
+
+    <string name="email"><u>info@tarc.edu.my</u></string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newVehicle">New Vehicle</string>
@@ -68,6 +99,7 @@
     <string name="vehicleModelName">Vehicle Model Name</string>
     <string name="auto_mannual">Auto/Mannual</string>
     <string name="save">Save</string>
+    <string name="showLess">Show less</string>
 
     <string name="pay">Pay</string>
     <string name="paymentMethod">Payment Method</string>
@@ -91,6 +123,8 @@
     <string name="cvv">CVV</string>
     <string name="cardHint">xxxx xxxx xxxx xxxx</string>
     <string name="cvvHint">xxx</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>
