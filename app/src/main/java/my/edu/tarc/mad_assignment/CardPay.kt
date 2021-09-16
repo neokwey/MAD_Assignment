@@ -58,7 +58,7 @@ class CardPay : AppCompatActivity() {
                     }
                     else
                     {
-                        refUsers2.child("rewards").child("voucher").child(key).child("quantity").setValue(qty)
+                        refUsers2.child("rewards").child("voucher").child(key).child("quantity").setValue(qty.toString())
                     }
 
 

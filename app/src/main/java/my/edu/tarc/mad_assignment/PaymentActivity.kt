@@ -111,14 +111,13 @@ class PaymentActivity : AppCompatActivity() {
             }
             else{
                 if(binding.radioButton1.isChecked){
-                    Toast.makeText(this@PaymentActivity, "loading page card", Toast.LENGTH_SHORT).show()
+
                     val intent = Intent(this@PaymentActivity, CardPay::class.java)
                     intent.putExtra("transID",id)
                     intent.putExtra("toPay",total)
                     startActivity(intent)
                 }else if(binding.radioButton2.isChecked){
                     updateVoucherqQty()
-                    Toast.makeText(this@PaymentActivity, "loading page offline", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@PaymentActivity, OfflinePay::class.java)
                     intent.putExtra("transID",id)
                     intent.putExtra("toPay",total)
@@ -132,6 +131,7 @@ class PaymentActivity : AppCompatActivity() {
         }
 
         binding.btnSelectVoucher.setOnClickListener {
+
             binding.linearVoucher.visibility = View.VISIBLE
         }
 
@@ -199,7 +199,7 @@ class PaymentActivity : AppCompatActivity() {
                     }
                     else
                     {
-                        refUsers2.child("rewards").child("voucher").child(key).child("quantity").setValue(qty)
+                        refUsers2.child("rewards").child("voucher").child(key).child("quantity").setValue(qty.toString())
                     }
 
 
