@@ -98,7 +98,7 @@ class EmptyActivity : AppCompatActivity() {
                 }
             }
 
-            setPositiveButton("Save", DialogInterface.OnClickListener { dialog, which ->
+            setPositiveButton("Buy", DialogInterface.OnClickListener { dialog, which ->
                 val spliterator = date.split("-")
                 val year = spliterator[0]
                 val month = spliterator[1]

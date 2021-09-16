@@ -35,7 +35,7 @@
 
         <EditText
             android:id="@+id/etxtValue"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
