@@ -357,7 +357,7 @@
         android:id="@+id/imgLogout"
         android:layout_width="47dp"
         android:layout_height="42dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

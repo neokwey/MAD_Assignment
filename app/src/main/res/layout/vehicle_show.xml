@@ -17,21 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        >
+        android:layout_gravity="top">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="110dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="top">
 
                 <TextView
                     android:id="@+id/car_plate_num"
@@ -144,8 +144,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
                         android:text="Claim"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -155,9 +155,9 @@
                         android:id="@+id/btnRenew"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="8dp"
                         android:text="Renew"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

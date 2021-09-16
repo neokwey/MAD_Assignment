@@ -1,29 +1,42 @@
 package my.edu.tarc.mad_assignment
 
-import android.app.AlertDialog
-import android.app.Dialog
+import android.content.DialogInterface
+import java.time.LocalDateTime
+import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.gms.common.api.Api
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-//val context:Context, val vehicles: List<Vehicle>
+//val context:Context, val vehicles: List<Vehicle>, private val cellClickListener: CellClickListener
 
 class RecyclerAdapter(private val context: android.content.Context, private val vehicles: List<Vehicle>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     var refUsers: DatabaseReference?= null
     var refUsers2: DatabaseReference?= null
     var firebaseUser : FirebaseUser? = null
+    var carId: String = ""
     private lateinit var insuranceList: ArrayList<insurance>
+    //private val myViewModel: NewApplicationActivity by
+
+    interface CellClickListener {
+        fun onCellClickListener(data: Vehicle, mode: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.vehicle_show, parent, false)
@@ -40,66 +53,38 @@ class RecyclerAdapter(private val context: android.content.Context, private val 
         val carID = currentitem.getcarID().toString()
         holder.itemView.setOnClickListener {
             firebaseUser = FirebaseAuth.getInstance().currentUser
-            /*refUsers2 = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
-            refUsers2!!.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })*/
             refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("insurance").child(carID)
             refUsers!!.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        holder.itembtnRenew.visibility = View.VISIBLE
+                        holder.itemViewRenew.visibility = View.VISIBLE
+                        holder.itembtnRenew.setOnClickListener{
+                            val intent = Intent(holder.itemView.context, EmptyActivity::class.java)
+                            intent.putExtra("carId", currentitem.getcarID().toString())
+                            holder.itemView.context.startActivity(intent)
+                        }
                         holder.itemLess2.setOnClickListener {
-                            holder.itembtnRenew.visibility = View.GONE
+                            holder.itemViewRenew.visibility = View.GONE
                         }
                         holder.itemExpDate.text = "Expired Date: " + snapshot.child("expiredDate").getValue().toString()
-                        //val count = snapshot.child("count").getValue()
-                        holder.itembtnRenew.setOnClickListener {
-                            //call dialog
-
-                            //retrive from db n calculation
-
-                            //get data n update to db
-
-                            //cancel btn
-
+                        holder.itembtnClaim.setOnClickListener {
+                            refUsers!!.removeValue()
+                            val intent = Intent(holder.itemView.context, NewApplicationActivity::class.java)
+                            holder.itemView.context.startActivity(intent)
                         }
 
                     } else {
-                        holder.itembtnNew.visibility = View.VISIBLE
-                        holder.itemLess1.setOnClickListener {
-                            holder.itembtnNew.visibility = View.GONE
+                        // no ncb discount
+                        holder.itemViewNew.visibility = View.VISIBLE
+                        holder.itembtnBuy.setOnClickListener{
+
+                            val intent = Intent(holder.itemView.context, EmptyActivity2::class.java)
+                            intent.putExtra("carId", currentitem.getcarID().toString())
+                            holder.itemView.context.startActivity(intent)
+
                         }
-                        holder.itembtnNew.setOnClickListener {
-                            //call dialog
-                            val mDialog = LayoutInflater.from(context).inflate(R.layout.reg_insurance_dialog, null)
-                            val mBuilder = AlertDialog.Builder(context)
-                                .setView(mDialog)
-                                .setTitle("Insurance Form")
-                                .show()
-
-                            //val mAlertDialog = mBuilder.show()
-                            //this.let { Dialog(it) }
-                            //retrive from db n calculation
-
-                            //confirm btn --> get data n update to db
-
-                            /*setOnClickListener {
-                                Toast.makeText(it.context, "Confirm", Toast.LENGTH_SHORT).show()
-                                mAlertDialog.dismiss()
-                            }
-                            //cancel btn
-                            holder.itemCancel.setOnClickListener {
-                                mAlertDialog.dismiss()
-                            }*/
+                        holder.itemLess1.setOnClickListener {
+                            holder.itemViewNew.visibility = View.GONE
                         }
                     }
                 }
@@ -121,15 +106,21 @@ class RecyclerAdapter(private val context: android.content.Context, private val 
     inner class  ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var itemImage: ShapeableImageView
         var itemPlatenum: TextView
-        var itembtnNew: ConstraintLayout
-        var itembtnRenew: ConstraintLayout
+        var itemViewNew: ConstraintLayout
+        var itemViewRenew: ConstraintLayout
         var itemLess1: TextView
         var itemLess2: TextView
         var itemExpDate: TextView
+        var itembtnBuy: Button
+        var itembtnRenew: Button
+        var itembtnClaim: Button
 
         init{
-            itembtnNew = itemView.findViewById(R.id.detail1)
-            itembtnRenew = itemView.findViewById(R.id.detail2)
+            itembtnClaim = itemView.findViewById(R.id.btnClaim)
+            itembtnRenew = itemView.findViewById(R.id.btnRenew)
+            itembtnBuy = itemView.findViewById(R.id.btnBuy)
+            itemViewNew = itemView.findViewById(R.id.detail1)
+            itemViewRenew = itemView.findViewById(R.id.detail2)
             itemImage = itemView.findViewById(R.id.car_image)
             itemPlatenum = itemView.findViewById(R.id.car_plate_num)
             itemLess1 = itemView.findViewById(R.id.txtshowLess1)
