@@ -78,10 +78,8 @@
             android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="parent"
             app:srcCompat="@drawable/circle_purple" />
 
         <ImageView
@@ -91,10 +89,8 @@
             android:onClick="phoneCall"
             app:layout_constraintBottom_toBottomOf="@+id/imageView14"
             app:layout_constraintEnd_toEndOf="@+id/imageView14"
-            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView14"
             app:layout_constraintTop_toTopOf="@+id/imageView14"
-            app:layout_constraintVertical_bias="parent"
             app:srcCompat="@drawable/telephone"
             tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -130,10 +126,8 @@
             android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="parent"
             app:srcCompat="@drawable/circle_purple" />
 
         <ImageView
