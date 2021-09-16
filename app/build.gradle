@@ -78,5 +78,8 @@ dependencies {
     //qrGenerator
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 
+    //firebase storage
+    implementation 'com.google.firebase:firebase-storage-ktx:19.2.0'
+
 
 }
