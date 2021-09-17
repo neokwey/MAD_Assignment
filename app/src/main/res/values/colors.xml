@@ -17,4 +17,5 @@
     <color name="statusBarColor">#211500</color>
     <color name="amountText">#CA6749</color>
     <color name="red">#FF0000</color>
+    <color name="main">#CC35E3</color>
 </resources>

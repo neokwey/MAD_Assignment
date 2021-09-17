@@ -69,7 +69,7 @@ class DashBoardActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.imgPayment.setOnClickListener{
-            val intent = Intent(this, PaymentActivity::class.java)
+            val intent = Intent(this, PaymentMenu::class.java)
             startActivity(intent)
         }
         binding.imgmyProfile.setOnClickListener{
