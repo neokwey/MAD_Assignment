@@ -23,6 +23,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -98,12 +99,19 @@ class ProfileActivity : AppCompatActivity() {
             }
         })
 
+        binding.txtState1.setOnClickListener{
+            binding.spinnerState1.isVisible = true
+            binding.tvTo.isVisible = true
+
+        }
+
         binding.btnSave.setOnClickListener{
             val name = binding.txtName1.text.toString()
             val phone = binding.txtPhone1.text.toString()
             val state = binding.txtState1.text.toString()
             val state2 = binding.txtState1.text.toString().uppercase()
             val address = binding.txtAddress1.text.toString()
+            val state1 = binding.spinnerState1.getSelectedItem().toString()
             var stateArray = arrayOf("KEDAH","JOHOR","KELANTAN","MALACCA","PAHANG","PERAK","PERLIS","SABAH","SARAWAK","SELANGOR","PENANG","TERENGGANU","NEGERI SEMBILAN")
 
 
@@ -134,16 +142,17 @@ class ProfileActivity : AppCompatActivity() {
 
                     if(!state2.equals("KEDAH")&&!state2.equals("JOHOR")&&!state2.equals("KELANTAN")&&!state2.equals("MALACCA")&&!state2.equals("PAHANG")
                         &&!state2.equals("PERAK")&&!state2.equals("PERLIS")&&!state2.equals("SABAH")&&!state2.equals("SARAWAK")&&!state2.equals("SELANGOR")
-                        &&!state2.equals("PENANG")&&!state2.equals("TERENGGANU")&&!state2.equals("NEGERI SEMBILAN")) {
+                        &&!state2.equals("PENANG")&&!state2.equals("TERENGGANU")&&!state2.equals("NEGERI SEMBILAN")&&!state2.equals("KUALA LUMPUR")) {
                             Toast.makeText(this@ProfileActivity, "Please insert valid state.", Toast.LENGTH_LONG).show()
                     }
                     else {
 
                         refUsers!!.child("name").setValue(name)
                         refUsers!!.child("phone").setValue(phone)
-                        refUsers!!.child("state").setValue(state)
+                        refUsers!!.child("state").setValue(state1)
                         refUsers!!.child("address").setValue(address)
                         refUsers!!.child("profile").setValue(dowlImg_profile)
+
 
                     Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
                         val intent = Intent(this, DashBoardActivity::class.java)
@@ -153,6 +162,8 @@ class ProfileActivity : AppCompatActivity() {
             }
 
         }
+
+
 
         /*binding.imageProfile2.setOnClickListener{
 

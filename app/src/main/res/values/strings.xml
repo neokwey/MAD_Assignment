@@ -50,6 +50,28 @@
         <item>Terengganu</item>
         <item>Selangor</item>
         <item>Negeri Sembilan</item>
+        <item>Kuala Lumpur</item>
+
+    </string-array>
+
+    <string-array name="state_list1">
+        <item>New State</item>
+        <item>Kedah</item>
+        <item>Johor</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Pahang</item>
+        <item>Penang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+        <item>Penang</item>
+        <item>Terengganu</item>
+        <item>Selangor</item>
+        <item>Negeri Sembilan</item>
+        <item>Kuala Lumpur</item>
 
     </string-array>
 
