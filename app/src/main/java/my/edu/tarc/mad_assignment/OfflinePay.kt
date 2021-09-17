@@ -95,10 +95,6 @@ class OfflinePay : AppCompatActivity() {
                      Log.e("Tag",e.toString())
                  }
 
-
-
-
-
         }
 
 }

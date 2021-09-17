@@ -79,6 +79,7 @@
         <item>1. Referral Code is unique and not shareable with others.</item>
         <item>2. All rewards are not able to share with others.</item>
         <item>3. Referral rewards must be use before expiry date.</item>
+        <item>4. All rewards can be only use in MyBee Insurance application.</item>
     </string-array>
 
     <string name="address"><u>Jalan Genting Kelang, Setapak, <br />
