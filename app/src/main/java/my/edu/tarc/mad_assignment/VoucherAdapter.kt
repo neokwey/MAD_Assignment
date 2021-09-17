@@ -45,6 +45,7 @@ class VoucherAdapter (private val voucherList : ArrayList<Voucher>, userUID : St
                     voucherRef.addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (snapshot.hasChild(voucherList[index].voucherID!!)){
+
                                 voucherRef.child(voucherList[index].voucherID!!).child("quantity").get().addOnSuccessListener {
                                     var qty = it.value.toString().toInt()
 

@@ -15,7 +15,6 @@ import my.edu.tarc.mad_assignment.databinding.ActivityCardPayBinding
 class CardPay : AppCompatActivity() {
     private lateinit var binding: ActivityCardPayBinding
     private lateinit var refUsers: DatabaseReference
-    private lateinit var refUsers2: DatabaseReference
     private lateinit var firebaseUser : FirebaseUser
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -39,31 +38,29 @@ class CardPay : AppCompatActivity() {
         }
     }
 
-    private fun updateVoucherqQty(){
+    private fun updateVoucherQty(){
+
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
         refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
-        refUsers2 = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
-        refUsers!!.child("voucherUsed").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val key : String = snapshot.child("voucherId").getValue().toString()
+        var voucherRef = refUsers.child("rewards").child("voucher")
 
-                refUsers2!!.child("rewards").child("voucher").child(key).child("quantity").get().addOnSuccessListener {
-                    //Toast.makeText(this@PaymentActivity, it.value.toString(),Toast.LENGTH_LONG).show()
+        refUsers.child("voucherUsed").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val key = snapshot.child("voucherId").getValue().toString()
+
+                voucherRef.child(key).child("quantity").get().addOnSuccessListener {
                     var qty = it.value.toString().toInt()
 
-                    qty--
-                    if(qty<=0)
-                    {
-                        refUsers2.child("rewards").child("voucher").child(key!!).removeValue()
-                    }
-                    else
-                    {
-                        refUsers2.child("rewards").child("voucher").child(key).child("quantity").setValue(qty.toString())
-                    }
+                    qty -= 1
 
-
+                    if(qty<=0){
+                        voucherRef.child(key).removeValue()
+                    }
+                    else{
+                        voucherRef.child(key).child("quantity").setValue(qty.toString())
+                    }
+                    refUsers.child("voucherUsed").child("amountDiscount").setValue("0")
                 }
-                refUsers.child("voucherUsed").child("amountDiscount").setValue("0")
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -71,7 +68,6 @@ class CardPay : AppCompatActivity() {
             }
 
         })
-
     }
 
     private fun expiryFormat(){
@@ -185,7 +181,7 @@ class CardPay : AppCompatActivity() {
             ).show()
             val intent = Intent(this, DashBoardActivity::class.java)
             startActivity(intent)
-            updateVoucherqQty()
+            updateVoucherQty()
             firebaseUser = FirebaseAuth.getInstance().currentUser!!
             refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
             refUsers!!.child("payment").removeValue()
