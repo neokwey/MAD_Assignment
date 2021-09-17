@@ -1,6 +1,7 @@
 package my.edu.tarc.mad_assignment
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,10 @@ import com.google.android.material.button.MaterialButton
 import com.google.zxing.WriterException
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import my.edu.tarc.mad_assignment.databinding.ActivityOfflinePayBinding
 import my.edu.tarc.mad_assignment.databinding.ActivityOfflinePaymentBinding
 import my.edu.tarc.mad_assignment.databinding.ActivityPaymentBinding
@@ -25,7 +30,8 @@ class OfflinePay : AppCompatActivity() {
 
 
         private lateinit var binding: ActivityOfflinePayBinding
-
+        private lateinit var refUsers: DatabaseReference
+        private lateinit var firebaseUser : FirebaseUser
         private lateinit var qrCodeIV: ImageView
         private lateinit var dataEdt: TextView
 
@@ -48,6 +54,19 @@ class OfflinePay : AppCompatActivity() {
             binding.textViewTotal.text = "RM ${toPay}"
             binding.textViewTotal2.text = "RM ${toPay}"
 
+            binding.btnDonePay.setOnClickListener {
+                Toast.makeText(
+                    this@OfflinePay,
+                    "Payment Successful.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(this, DashBoardActivity::class.java)
+                startActivity(intent)
+
+                firebaseUser = FirebaseAuth.getInstance().currentUser!!
+                refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
+                refUsers!!.child("payment").removeValue()
+            }
 
             //set find ID
             qrCodeIV = findViewById(R.id.imgViewQr)
