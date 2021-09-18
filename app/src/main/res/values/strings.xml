@@ -171,6 +171,7 @@
     <string name="cardHint">xxxx xxxx xxxx xxxx</string>
     <string name="cvvHint">xxx</string>
     <string name="confirm">CONFIRM</string>
+    <string name="ok">ok</string>
     <string name="discount">Discount</string>
     <string name="selectVoucher">Select Voucher</string>
     <string name="marketValue">Vehicle Market Value</string>
