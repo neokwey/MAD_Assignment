@@ -66,7 +66,10 @@ class RegisterUserActivity : AppCompatActivity() {
         binding.imagePicture.setOnClickListener {
             showImageUploadOptions()
         }
+        binding.tvUpload.setOnClickListener{
+            showImageUploadOptions()
 
+        }
 
 
     }
