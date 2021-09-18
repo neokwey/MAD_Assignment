@@ -1,5 +1,6 @@
 package my.edu.tarc.mad_assignment
 
+import android.app.Activity
 import android.content.Intent
 import android.icu.number.Precision.increment
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,23 @@ class RegisterUserActivity : AppCompatActivity() {
         binding =  ActivityRegisterUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mAuth = FirebaseAuth.getInstance()
+
+        binding.imageViewScanQR.setOnClickListener{
+            val qrReferral : Int = 0
+            val intent = Intent(this, QRCodeScanner::class.java)
+            startActivityForResult(intent, qrReferral)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            val code = data!!.getStringExtra("qrReferral")
+            binding.editTextReferral.setText(code.toString())
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     fun registerOnclick(view: android.view.View) {

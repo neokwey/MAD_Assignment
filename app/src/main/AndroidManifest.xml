@@ -21,15 +21,18 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/Theme.MAD_Assignment">
+        <activity
+            android:name=".QRCodeScanner"
+            android:exported="true" />
         <activity
             android:name=".CardPay"
             android:exported="true"
             android:label="Card Payment"
-            android:parentActivityName=".DashBoardActivity"/>
-        <activity android:name=".OfflinePay"
+            android:parentActivityName=".DashBoardActivity" />
+        <activity
+            android:name=".OfflinePay"
             android:exported="true"
             android:label="Pay At 7-Eleven"
             android:parentActivityName=".DashBoardActivity" />
@@ -52,9 +55,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
-
-
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
