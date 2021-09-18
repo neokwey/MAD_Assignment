@@ -201,9 +201,8 @@ object FileUtils {
     }
 
     fun createFile(context: Context, directoryName: String?, fileName: String?): File {
-        /*val directory =
-            File(Environment.getExternalStorageDirectory(), directoryName)*/
-        val directory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val directory = File(Environment.getExternalStorageDirectory(), directoryName)
+        //val directory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         if (!directory!!.exists()) {
             directory.mkdirs()
         }

@@ -61,25 +61,28 @@ class RecyclerAdapter(private val context: android.content.Context, private val 
                         holder.itembtnRenew.setOnClickListener{
                             val intent = Intent(holder.itemView.context, EmptyActivity::class.java)
                             intent.putExtra("carId", currentitem.getcarID().toString())
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             holder.itemView.context.startActivity(intent)
                         }
                         holder.itemLess2.setOnClickListener {
                             holder.itemViewRenew.visibility = View.GONE
                         }
                         holder.itemExpDate.text = "Expired Date: " + snapshot.child("expiredDate").getValue().toString()
+
                         holder.itembtnClaim.setOnClickListener {
-                            refUsers!!.removeValue()
+                            refUsers!!.child("ncb").setValue("0")
                             val intent = Intent(holder.itemView.context, NewApplicationActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             holder.itemView.context.startActivity(intent)
                         }
 
                     } else {
-                        // no ncb discount
                         holder.itemViewNew.visibility = View.VISIBLE
                         holder.itembtnBuy.setOnClickListener{
 
                             val intent = Intent(holder.itemView.context, EmptyActivity2::class.java)
                             intent.putExtra("carId", currentitem.getcarID().toString())
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             holder.itemView.context.startActivity(intent)
 
                         }
