@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentMenu">
+
+    <ImageView
+        android:id="@+id/imgMakePayment"
+        android:layout_width="162dp"
+        android:layout_height="154dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPaymentHistory"
+        app:layout_constraintEnd_toStartOf="@+id/imgPaymentHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgPaymentHistory"
+        app:srcCompat="@drawable/pay" />
+
+    <ImageView
+        android:id="@+id/imgPaymentHistory"
+        android:layout_width="162dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/history" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Make Payment"
+        android:textColor="@color/main"
+        app:layout_constraintEnd_toEndOf="@+id/imgMakePayment"
+        app:layout_constraintStart_toStartOf="@+id/imgMakePayment"
+        app:layout_constraintTop_toBottomOf="@+id/imgMakePayment" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Payment History"
+        android:textColor="@color/main"
+        app:layout_constraintEnd_toEndOf="@+id/imgPaymentHistory"
+        app:layout_constraintStart_toStartOf="@+id/imgPaymentHistory"
+        app:layout_constraintTop_toBottomOf="@+id/imgPaymentHistory" />
+</androidx.constraintlayout.widget.ConstraintLayout>

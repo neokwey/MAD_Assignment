@@ -19,7 +19,6 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import my.edu.tarc.mad_assignment.databinding.ActivityReferralBinding
-import my.edu.tarc.mad_assignment.databinding.ActivityRewardBinding
 import java.lang.Exception
 
 class ReferralActivity : AppCompatActivity() {

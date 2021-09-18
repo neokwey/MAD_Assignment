@@ -16,7 +16,9 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.Window
+import android.widget.ArrayAdapter
 import android.widget.LinearLayout
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,11 +48,12 @@ class ProfileActivity : AppCompatActivity() {
     var uri1: Uri? = null
     lateinit var file: File
     var uID: String = ""
-    private lateinit var dowlImg_profile: String
+    private var dowlImg_profile: String? = null
     private lateinit var requestStoragePermissionLauncher: ActivityResultLauncher<String>
     private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
     private val IMAGE_CAPTURE = 100
     private lateinit var  imageUri : Uri
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,10 +84,10 @@ class ProfileActivity : AppCompatActivity() {
                     binding.txtEmail1.setText(user!!.getEmail())
                     binding.txtPhone1.setText(user!!.getPhone())
                     binding.txtState1.setText(user!!.getState())
+                    //var existState = user!!.getState().toString().uppercase()
                     binding.txtName1.setText(user!!.getname())
                     binding.txtAddress1.setText(user!!.getAddress())
                     Picasso.get().load(user.getProfile()).into(binding.imageProfile2)
-
 
 
 
@@ -100,22 +103,31 @@ class ProfileActivity : AppCompatActivity() {
         })
 
         binding.txtState1.setOnClickListener{
-            binding.spinnerState1.isVisible = true
-            binding.tvTo.isVisible = true
+            binding.spinnerState1.visibility = View.VISIBLE
+            binding.tvTo.isVisible = false
+            binding.txtState1.visibility = View.GONE
 
         }
+
+        //stateOption = binding.spinnerEditState as Spinner
+
+       // var spinPosition = stateOption.
+
+       // val options = arrayOf("KEDAH","JOHOR","KELANTAN","MALACCA","PAHANG","PERAK","PERLIS","SABAH","SARAWAK","SELANGOR","PENANG","TERENGGANU","NEGERI SEMBILAN")
+//        val myAdap = stateOption.getAdapter()
+
+
 
         binding.btnSave.setOnClickListener{
             val name = binding.txtName1.text.toString()
             val phone = binding.txtPhone1.text.toString()
-            val state = binding.txtState1.text.toString()
+            //val state = binding.txtState1.text.toString()
             val state2 = binding.txtState1.text.toString().uppercase()
             val address = binding.txtAddress1.text.toString()
             val state1 = binding.spinnerState1.getSelectedItem().toString()
-            var stateArray = arrayOf("KEDAH","JOHOR","KELANTAN","MALACCA","PAHANG","PERAK","PERLIS","SABAH","SARAWAK","SELANGOR","PENANG","TERENGGANU","NEGERI SEMBILAN")
+            //val state :String = binding.spinnerEditState.getSelectedItem().toString()
 
-
-            if(name==""&&phone==""&&state==""&&address=="")
+            if(name==""&&phone==""&&address=="")
             {
                 Toast.makeText(this@ProfileActivity, "Please fill in the detail", Toast.LENGTH_LONG).show()
             }
@@ -127,9 +139,9 @@ class ProfileActivity : AppCompatActivity() {
             {
                 Toast.makeText(this@ProfileActivity, "Please insert phone number.", Toast.LENGTH_LONG).show()
             }
-            else if(state=="")
+            else if(state1=="New State")
             {
-                Toast.makeText(this@ProfileActivity, "Please insert state.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@ProfileActivity, "Please select state.", Toast.LENGTH_LONG).show()
             }
             else if(address=="")
             {
@@ -137,28 +149,31 @@ class ProfileActivity : AppCompatActivity() {
             }
             else
             {
-               /* for(item in stateArray)
-                {*/
+                if(dowlImg_profile == null)
+                {
+                    refUsers!!.child("name").setValue(name)
+                    refUsers!!.child("phone").setValue(phone)
+                    refUsers!!.child("state").setValue(state1)
+                    refUsers!!.child("address").setValue(address)
 
-                    if(!state2.equals("KEDAH")&&!state2.equals("JOHOR")&&!state2.equals("KELANTAN")&&!state2.equals("MALACCA")&&!state2.equals("PAHANG")
-                        &&!state2.equals("PERAK")&&!state2.equals("PERLIS")&&!state2.equals("SABAH")&&!state2.equals("SARAWAK")&&!state2.equals("SELANGOR")
-                        &&!state2.equals("PENANG")&&!state2.equals("TERENGGANU")&&!state2.equals("NEGERI SEMBILAN")&&!state2.equals("KUALA LUMPUR")) {
-                            Toast.makeText(this@ProfileActivity, "Please insert valid state.", Toast.LENGTH_LONG).show()
-                    }
-                    else {
+                }
+                else
+                {
+                    refUsers!!.child("name").setValue(name)
+                    refUsers!!.child("phone").setValue(phone)
+                    refUsers!!.child("state").setValue(state1)
+                    refUsers!!.child("address").setValue(address)
+                    refUsers!!.child("profile").setValue(dowlImg_profile)
 
-                        refUsers!!.child("name").setValue(name)
-                        refUsers!!.child("phone").setValue(phone)
-                        refUsers!!.child("state").setValue(state1)
-                        refUsers!!.child("address").setValue(address)
-                        refUsers!!.child("profile").setValue(dowlImg_profile)
+                }
+
+                Toast.makeText(this@ProfileActivity, dowlImg_profile.toString(),Toast.LENGTH_LONG).show()
+
+                Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, DashBoardActivity::class.java)
+                startActivity(intent)
 
 
-                    Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this, DashBoardActivity::class.java)
-                        startActivity(intent)
-                    }
-                /*}*/
             }
 
         }
