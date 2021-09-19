@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import my.edu.tarc.mad_assignment.databinding.ActivityPaymentBinding
 import java.time.LocalDate
 import java.time.LocalTime
@@ -34,6 +35,7 @@ class PaymentActivity : AppCompatActivity() {
     private var totalPay : Double = 0.0
     private var totalAmount : Double = 0.0
     private var discount : Double =0.0
+    var transactionID : Int = 0
 
     /*private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
@@ -86,11 +88,25 @@ class PaymentActivity : AppCompatActivity() {
         startActivity(intent)*/
 
         paymentList= arrayListOf<Payment>()
+        generateTransID()
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("paymentHistory").child(transactionID!!.toString())
+        refUsers!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    generateTransID()
+                    binding.textViewTransactionIDPayment.text = "$transactionID"
+                }
+                else{
+                    binding.textViewTransactionIDPayment.text = "$transactionID"
+                }
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
 
 
-
-        val transactionID = Random.nextInt(1000000000)
-        binding.textViewTransactionIDPayment.text = "$transactionID"
         val id = binding.textViewTransactionIDPayment.text.toString()
         val payDate = LocalDate.now()
         val payTime = LocalTime.now().toString()
@@ -100,6 +116,8 @@ class PaymentActivity : AppCompatActivity() {
         val time = payTime.format(formatterTime)
         binding.textViewDatePayment.text = date
         binding.textViewTimePayment.text = time
+
+
 
 
 
@@ -156,6 +174,11 @@ class PaymentActivity : AppCompatActivity() {
         }
 
     }
+
+    fun generateTransID(){
+        transactionID = Random.nextInt(1000000000)
+    }
+
 
     private fun getVoucherData() {
 
