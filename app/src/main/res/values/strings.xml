@@ -33,6 +33,25 @@
     <string name="reg">Register</string>
     <string name="reward">Reward</string>
 
+    <string-array name="Type_list">
+    <item>Auto</item>
+    <item>Mannual</item>
+    </string-array>
+
+    <string-array name="cc_list">
+        <item>1.0</item>
+        <item>1.1</item>
+        <item>1.2</item>
+        <item>1.3</item>
+        <item>1.4</item>
+        <item>1.5</item>
+        <item>1.6</item>
+        <item>1.7</item>
+        <item>1.8</item>
+        <item>1.9</item>
+        <item>2.0</item>
+    </string-array>
+
     <string-array name="state_list">
         <item>State</item>
         <item>Kedah</item>
@@ -152,6 +171,7 @@
     <string name="cardHint">xxxx xxxx xxxx xxxx</string>
     <string name="cvvHint">xxx</string>
     <string name="confirm">CONFIRM</string>
+    <string name="ok">ok</string>
     <string name="discount">Discount</string>
     <string name="selectVoucher">Select Voucher</string>
     <string name="marketValue">Vehicle Market Value</string>

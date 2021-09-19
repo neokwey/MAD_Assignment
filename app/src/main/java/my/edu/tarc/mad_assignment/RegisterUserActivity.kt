@@ -1,22 +1,58 @@
 package my.edu.tarc.mad_assignment
 
 import android.app.Activity
+import android.app.Dialog
+import android.app.ProgressDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.icu.number.Precision.increment
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
+import android.view.View
+import android.view.Window
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 import my.edu.tarc.mad_assignment.databinding.*
+import my.edu.tarc.mad_assignment.utils.Constants
+import my.edu.tarc.mad_assignment.utils.FileUtils
+import my.edu.tarc.mad_assignment.utils.SharedPreferencesUtils
+import java.io.File
+import java.security.AccessController.getContext
 
 class RegisterUserActivity : AppCompatActivity() {
-    //private lateinit var binding: ActivityMainBinding
+
     private lateinit var binding: ActivityRegisterUserBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID : String = ""
     val firebase : DatabaseReference =  FirebaseDatabase.getInstance().getReference("customer")
+    private lateinit var requestStoragePermissionLauncher: ActivityResultLauncher<String>
+    private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
+    private lateinit var galleryLl: LinearLayout
+    private val TAG = Vehicle_add::class.java.simpleName
+    private lateinit var mProgressDialog: ProgressDialog
+    var uri1: Uri? = null
+    lateinit var file: File
+    var uID: String = ""
+    private var dowlImg_profile: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +61,17 @@ class RegisterUserActivity : AppCompatActivity() {
         binding =  ActivityRegisterUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mAuth = FirebaseAuth.getInstance()
+        registerStoragePermission()
+        registerGalleryLauncher1()
+        binding.imagePicture.setOnClickListener {
+            showImageUploadOptions()
+        }
+        binding.tvUpload.setOnClickListener{
+            showImageUploadOptions()
 
-        binding.imageViewScanQR.setOnClickListener{
-            val qrReferral : Int = 0
-            val intent = Intent(this, QRCodeScanner::class.java)
-            startActivityForResult(intent, qrReferral)
         }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK) {
-            val code = data!!.getStringExtra("qrReferral")
-            binding.editTextReferral.setText(code.toString())
-        }
-        else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
+
     }
 
     fun registerOnclick(view: android.view.View) {
@@ -102,37 +132,38 @@ class RegisterUserActivity : AppCompatActivity() {
         val state :String = binding.spinState.getSelectedItem().toString()
         val address : String = binding.txtAddress.text.toString()
 
-        if(name==""&&password==""&&email==""&&email==""&&phone==""&&address=="")
+        if(name=="")
         {
-            Toast.makeText(this@RegisterUserActivity, "Please fill in the detail", Toast.LENGTH_LONG).show()
+            binding.txtName.setError("Please fill in name.")
         }
-        else if(name=="")
-        {
-            Toast.makeText(this@RegisterUserActivity, "Please insert your name.", Toast.LENGTH_LONG).show()
-        }
+
         else if(password=="")
         {
-            Toast.makeText(this@RegisterUserActivity, "Please insert password.", Toast.LENGTH_LONG).show()
+            binding.txtPass.setError("Please insert password.")
         }
         else if(!repass.equals(password))
         {
-            Toast.makeText(this@RegisterUserActivity, "Password not match.", Toast.LENGTH_LONG).show()
+            binding.txtConPass.setError("Password not match.")
         }
         else if (email=="")
         {
-            Toast.makeText(this@RegisterUserActivity, "Please insert email.", Toast.LENGTH_LONG).show()
+            binding.txtEmail.setError("Please insert email.")
         }
         else if(phone=="")
         {
-            Toast.makeText(this@RegisterUserActivity, "Please insert Phone Number.", Toast.LENGTH_LONG).show()
+            binding.txtPhone.setError("Please insert phone number.")
         }
         else if(binding.spinState.selectedItemPosition==0)
         {
-            Toast.makeText(this@RegisterUserActivity, "Please select state.", Toast.LENGTH_LONG).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Please select state.")
+            builder.setPositiveButton(R.string.ok,
+                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
+            builder.show()
         }
         else if(address=="")
         {
-            Toast.makeText(this@RegisterUserActivity, "Please insert your address", Toast.LENGTH_LONG).show()
+            binding.txtAddress.setError("Please fill in address.")
         }
 
         else{
@@ -142,17 +173,35 @@ class RegisterUserActivity : AppCompatActivity() {
                     firebaseUserID = mAuth.currentUser!!.uid
                     refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUserID)
                     val userHashMap = HashMap<String, Any>()
-                    userHashMap["uid"] = firebaseUserID
-                    userHashMap["name"] = name
-                    userHashMap["password"] = password
-                    userHashMap["email"] = email
-                    userHashMap["phone"] = phone
-                    userHashMap["state"] = state
-                    userHashMap["address"] = address
-                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/avatar.jpg?alt=media&token=63ce9acb-32a4-4a0c-80e7-cf410e29f2d3"
-                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
-                    userHashMap["status"] = "offline"
-                    userHashMap["referralCode"] = referralCode
+                    if(dowlImg_profile == null)
+                    {
+                        //val userHashMap = HashMap<String, Any>()
+                        userHashMap["uid"] = firebaseUserID
+                        userHashMap["name"] = name
+                        userHashMap["password"] = password
+                        userHashMap["email"] = email
+                        userHashMap["phone"] = phone
+                        userHashMap["state"] = state
+                        userHashMap["address"] = address
+                        userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/avatar.jpg?alt=media&token=5b961f5d-4450-4b26-a05b-6ac942f3d855"
+                        userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
+                        userHashMap["status"] = "offline"
+                        userHashMap["referralCode"] = referralCode
+                    }else{
+                        //var userHashMap = HashMap<String, Any>()
+                        userHashMap["uid"] = firebaseUserID
+                        userHashMap["name"] = name
+                        userHashMap["password"] = password
+                        userHashMap["email"] = email
+                        userHashMap["phone"] = phone
+                        userHashMap["state"] = state
+                        userHashMap["address"] = address
+                        userHashMap["profile"] = dowlImg_profile.toString()
+                        userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/mad-assignment-56b04.appspot.com/o/cover.jpg?alt=media&token=170a50c3-60a3-4e1b-ab5a-7b74ee997c52"
+                        userHashMap["status"] = "offline"
+                        userHashMap["referralCode"] = referralCode
+                    }
+
 
                     if (binding.editTextReferral.text!=null){
                         referralPoints()
@@ -163,6 +212,18 @@ class RegisterUserActivity : AppCompatActivity() {
                         .addOnCompleteListener {
                                 task2 ->
                             if(task2.isSuccessful){
+
+
+                                mAuth.currentUser?.sendEmailVerification()
+                                    ?.addOnCompleteListener { task ->
+                                        if(task.isSuccessful){
+
+                                            Toast.makeText(this@RegisterUserActivity, "Link Successfully sent, Please verify your email to login.", Toast.LENGTH_LONG).show()
+
+                                        }
+
+
+                                    }
                                 val intent = Intent(this, LoginActivity::class.java)
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                 startActivity(intent)
@@ -171,25 +232,220 @@ class RegisterUserActivity : AppCompatActivity() {
                         }
 
 
-                        mAuth.currentUser?.sendEmailVerification()
-                            ?.addOnCompleteListener { task ->
-                                if(task.isSuccessful){
-
-                                    Toast.makeText(this@RegisterUserActivity,"Link Successfully sent, Please verify your email to login.", Toast.LENGTH_LONG).show()
-
-                                }
-
-
-                            }
 
 
 
                 }
                 else{
-                    Toast.makeText(this@RegisterUserActivity, "Error Message:" + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Error Message:" + task.exception!!.message.toString())
+                    builder.setPositiveButton(R.string.ok,
+                        DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
+                    builder.show()
                 }
             }
         }
 
+    }
+
+    fun CallStoragePermission() {
+
+        if (!Status_checkReadExternalStoragePermission()) {
+            requestStoragePermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        } else {
+            viewGallery()
+        }
+    }
+
+    fun viewGallery() {
+        val intentDocument = Intent(Intent.ACTION_GET_CONTENT)
+        intentDocument.type = "image/*"
+        intentDocument.putExtra(
+            Constants.REQUEST_CODE,
+            Constants.REQUEST_PHOTO_FROM_GALLERY5
+        )
+        galleryLauncher.launch(intentDocument)
+    }
+
+    private fun showImageUploadOptions() {
+        val mDialog = this.let { Dialog(it) }
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        mDialog.setContentView(R.layout.dialog_profile_image_option)
+        mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        galleryLl = mDialog.findViewById<View>(R.id.id_gallery_ll) as LinearLayout
+
+
+        galleryLl.setOnClickListener {
+            CallStoragePermission()
+            mDialog.dismiss()
+        }
+
+
+
+        mDialog.setCancelable(true)
+        mDialog.show()
+        val metrics = resources.displayMetrics
+        val width = metrics.widthPixels
+        //val height = metrics.heightPixels
+        mDialog.window!!.setLayout(
+            width,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
+    }
+
+    private fun registerStoragePermission() {
+        requestStoragePermissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+                if (granted) {
+                    Log.d(TAG, "registerStoragePermission - Storage Permission Granted")
+                    viewGallery()
+                } else {
+                    Log.d(TAG, "registerStoragePermission - Storage Permission NOT Granted")
+                    requestStoragePermission()
+                }
+            }
+    }
+
+    private val uploadimgPath = FirebaseStorage.getInstance().getReference()
+
+    fun uploadFront(mContext: Context, imageURI: Uri){
+        mProgressDialog = ProgressDialog(mContext)
+        mProgressDialog.setMessage("Please wait, image being uploading...")
+        mProgressDialog.show()
+        val uploadTime = System.currentTimeMillis()
+        val uploadTask = uploadimgPath.child("profile").child("/images_profile$uploadTime.png").putFile(imageURI)
+
+        uploadTask.addOnSuccessListener {
+            //Log.e(TAG, "Image upload successfully.")
+            Toast.makeText(this, " Profile photo added successfully.", Toast.LENGTH_SHORT).show()
+            val downloadURLTask = uploadimgPath.child("profile").child("/images_profile$uploadTime.png").downloadUrl
+            downloadURLTask.addOnSuccessListener {
+                dowlImg_profile = it!!.toString()
+                mProgressDialog.dismiss()
+            }.addOnFailureListener{
+                mProgressDialog.dismiss()
+            }
+        }.addOnCanceledListener {
+            Toast.makeText(this, " Failed to add profile photo.", Toast.LENGTH_SHORT).show()
+            mProgressDialog.dismiss()
+        }
+    }
+
+    private fun registerGalleryLauncher1() {
+        galleryLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val data: Intent? = result.data
+                    if (data == null) {
+                        return@registerForActivityResult
+                    }
+                    uri1 = data.data!!
+                    var imageLocalPath = File(FileUtils.getPathReal(this, uri1!!))
+
+                    file = imageLocalPath.absoluteFile
+                    uploadFront(this, uri1!!)
+
+                    SharedPreferencesUtils.setProfilePath(this, imageLocalPath.absolutePath)
+                    Glide.with(this).load(uri1!!)
+                        .into(binding.imagePicture)
+                    //binding.imgFront.setScaleType(ImageView.ScaleType.CENTER_CROP)
+                }
+            }
+    }
+
+    private fun requestStoragePermission() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED -> {
+
+                    Log.d(TAG, "requestStoragePermission - Storage Permission Granted")
+                    viewGallery()
+                }
+                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+                    // This case means user previously denied the permission
+                    // So here we can display an explanation to the user
+                    // That why exactly we need this permission
+                    Log.d(TAG, "requestStoragePermission - Storage Permission NOT Granted")
+                    showPermissionAlert(
+                        getString(R.string.read_storage_permission_required),
+                        getString(R.string.storage_permission_denied),
+                        getString(R.string.ok_caps),
+                        getString(R.string.cancel_caps)
+                    ) { requestStoragePermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE) }
+                }
+                else -> {
+                    // Everything is fine you can simply request the permission
+
+                    showPermissionAlert(
+                        getString(R.string.read_storage_permission_required),
+                        getString(R.string.storage_permission_denied),
+                        getString(R.string.settings_caps),
+                        getString(R.string.cancel_caps)
+                    ) {
+                        val intent = Intent()
+                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        val uri = Uri.fromParts(
+                            "package",
+                            BuildConfig.APPLICATION_ID, null
+                        )
+                        intent.data = uri
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun showPermissionAlert(title: String, message: String, ok: String, cancel: String, function: () -> Unit) {
+        val mDialog = this.let { Dialog(it) }
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        mDialog.setContentView(R.layout.dialog_permission_alert)
+        mDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val mTitleTv = mDialog.findViewById<View>(R.id.id_title_tv) as AppCompatTextView
+        mTitleTv.text = title
+
+        val mMessageTv = mDialog.findViewById<View>(R.id.id_message_tv) as AppCompatTextView
+        mMessageTv.text = message
+
+        val mNoBtn = mDialog.findViewById<View>(R.id.no_btn) as AppCompatTextView
+        mNoBtn.text = cancel
+
+        val mYesBtn = mDialog.findViewById<View>(R.id.yes_btn) as AppCompatTextView
+        mYesBtn.text = ok
+
+        mYesBtn.setOnClickListener {
+            function.invoke()
+            mDialog.dismiss()
+        }
+
+        mNoBtn.setOnClickListener { mDialog.dismiss() }
+
+        mDialog.setCancelable(true)
+        mDialog.show()
+        val metrics = resources.displayMetrics
+        val width = metrics.widthPixels
+        //val height = metrics.heightPixels
+        mDialog.window!!.setLayout(
+            width,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+    private fun Status_checkReadExternalStoragePermission(): Boolean {
+        val permissionState = ActivityCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        return permissionState == PackageManager.PERMISSION_GRANTED
     }
 }

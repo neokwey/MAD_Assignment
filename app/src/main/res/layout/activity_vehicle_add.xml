@@ -174,22 +174,6 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
-                    android:id="@+id/etxtCC"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/cc1"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="@+id/textView2"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <EditText
                     android:id="@+id/etxtModel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -219,22 +203,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <EditText
-                    android:id="@+id/etxtType"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/auto_mannual"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="@+id/textView5"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
@@ -292,14 +260,38 @@
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/textView10" />
 
+                <Spinner
+                    android:id="@+id/etxtCC"
+                    android:layout_width="97dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:entries="@array/cc_list"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                <Spinner
+                    android:id="@+id/etxtType"
+                    android:layout_width="0dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:entries="@array/Type_list"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
                 <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toEndOf="@+id/imgRight"
-                    app:layout_constraintStart_toStartOf="@+id/imgRight"
-                    app:layout_constraintTop_toBottomOf="@+id/imgRight" />
+                    android:id="@+id/textView35"
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="8dp"
+                    android:text="CC"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/etxtCC"
+                    app:layout_constraintStart_toEndOf="@+id/etxtCC"
+                    app:layout_constraintTop_toTopOf="@+id/etxtCC" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

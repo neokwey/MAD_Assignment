@@ -1,9 +1,11 @@
 package my.edu.tarc.mad_assignment
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -50,7 +52,12 @@ class LoginActivity : AppCompatActivity() {
             ?.addOnCompleteListener { task ->
                 if(task.isSuccessful){
 
-                    Toast.makeText(this@LoginActivity,"Link Successfully sent, Please verify your email to login.", Toast.LENGTH_LONG).show()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Link Successfully sent, Please verify your email to login.")
+                    builder.setPositiveButton(R.string.ok,
+                        DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
+                    builder.show()
 
                 }
 
@@ -67,9 +74,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         if (email==""){
-            Toast.makeText(this@LoginActivity, "Please insert email.", Toast.LENGTH_LONG).show()
+
+            binding.txtEmail2.setError("Please fill in email.")
         } else if(password=="") {
-            Toast.makeText(this@LoginActivity, "Please insert password.", Toast.LENGTH_LONG).show()
+
+            binding.txtPass1.setError("Please enter password.")
         } else{
 
 
@@ -78,7 +87,12 @@ class LoginActivity : AppCompatActivity() {
                 if(mAuth.currentUser?.isEmailVerified==false)
                 {
                 binding.tvLink.isVisible = true
-                Toast.makeText(this@LoginActivity, "Email not verified.", Toast.LENGTH_LONG).show()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Email not verified.")
+                    builder.setPositiveButton(R.string.ok,
+                        DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
+                    builder.show()
 
                 }else
                 { if (task.isSuccessful) {
@@ -88,7 +102,12 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }else if(!task.isSuccessful){
-                    Toast.makeText(this@LoginActivity, "Error Message:" + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle(task.exception!!.message.toString())
+                    builder.setPositiveButton(R.string.ok,
+                        DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
+                    builder.show()
                 }
                 }
                 }

@@ -1,6 +1,5 @@
 package my.edu.tarc.mad_assignment
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import org.w3c.dom.Text
-import kotlin.properties.Delegates
 
 
 class VoucherAdapter (private val voucherList : ArrayList<Voucher>, userUID : String, txtPoints : TextView) : RecyclerView.Adapter<VoucherAdapter.MyViewHolder>() {
@@ -87,8 +84,8 @@ class VoucherAdapter (private val voucherList : ArrayList<Voucher>, userUID : St
     }
 
     class MyViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView){
-        val description : TextView = itemView.findViewById(R.id.textViewTitle)
-        val points : TextView = itemView.findViewById(R.id.textViewPoints)
+        val description : TextView = itemView.findViewById(R.id.textViewTransID)
+        val points : TextView = itemView.findViewById(R.id.textViewTotalPay)
         val btnClaim : Button = itemView.findViewById(R.id.buttonClaim)
     }
 }

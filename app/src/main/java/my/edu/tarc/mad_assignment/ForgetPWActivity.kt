@@ -18,7 +18,7 @@ class ForgetPWActivity : AppCompatActivity() {
         binding.btnSent.setOnClickListener {
             val email : String =  binding.txtSentEmail.text.toString().trim{it <= ' '}
             if(email.isEmpty()){
-                Toast.makeText(this@ForgetPWActivity, "Please enter email address", Toast.LENGTH_LONG).show()
+                binding.txtSentEmail.setError("Please enter email address.")
             }
             else{
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)

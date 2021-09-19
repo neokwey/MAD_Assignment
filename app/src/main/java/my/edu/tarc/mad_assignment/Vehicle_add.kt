@@ -3,6 +3,7 @@ package my.edu.tarc.mad_assignment
 import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -157,10 +158,10 @@ class Vehicle_add : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val vehiclebrand: String = binding.etxtBrand.text.toString()
-                    val vehiclecc: String = binding.etxtCC.text.toString()
+                    val vehiclecc: String = binding.etxtCC.getSelectedItem().toString()
                     val vehiclemodelName: String = binding.etxtModel.text.toString()
                     val vehicleplatenum: String = binding.etxtPlatenum.text.toString()
-                    val vehicletype: String = binding.etxtType.text.toString()
+                    val vehicletype: String = binding.etxtType.getSelectedItem().toString()
                     val vehicleyear: String = binding.etxtYear.text.toString()
 
                     if (vehiclebrand==""){
@@ -179,26 +180,32 @@ class Vehicle_add : AppCompatActivity() {
                         val carVehicle = Vehicle(dowlImg_back,vehiclebrand,carID,vehicletype,vehicleyear,vehiclemodelName,vehiclecc,dowlImg_front,dowlImg_left,vehicleplatenum,dowlImg_right)
                         refUsers!!.child(carID).setValue(carVehicle).addOnSuccessListener {
                             binding.etxtBrand.text.clear()
-                            binding.etxtCC.text.clear()
+                            binding.etxtCC.setSelection(0)
                             binding.etxtModel.text.clear()
                             binding.etxtPlatenum.text.clear()
-                            binding.etxtType.text.clear()
+                            binding.etxtType.setSelection(0)
                             binding.etxtYear.text.clear()
                             binding.imgFront.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgBack.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgLeft.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgRight.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             Toast.makeText(this@Vehicle_add, " Vehicle added successfully.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@Vehicle_add, NewApplicationActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
                         }.addOnFailureListener {
                             Toast.makeText(this@Vehicle_add, " Failed to add vehicle.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@Vehicle_add, NewApplicationActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
                         }
                     }
                 } else {
                     val vehiclebrand: String = binding.etxtBrand.text.toString()
-                    val vehiclecc: String = binding.etxtCC.text.toString()
+                    val vehiclecc: String = binding.etxtCC.getSelectedItem().toString()
                     val vehiclemodelName: String = binding.etxtModel.text.toString()
                     val vehicleplatenum: String = binding.etxtPlatenum.text.toString()
-                    val vehicletype: String = binding.etxtType.text.toString()
+                    val vehicletype: String = binding.etxtType.getSelectedItem().toString()
                     val vehicleyear: String = binding.etxtYear.text.toString()
 
                     if (vehiclebrand==""){
@@ -217,18 +224,24 @@ class Vehicle_add : AppCompatActivity() {
                         val carVehicle = Vehicle(dowlImg_back,vehiclebrand,carID,vehicletype,vehicleyear,vehiclemodelName,vehiclecc,dowlImg_front,dowlImg_left,vehicleplatenum,dowlImg_right)
                         refUsers!!.child(carID).setValue(carVehicle).addOnSuccessListener {
                             binding.etxtBrand.text.clear()
-                            binding.etxtCC.text.clear()
+                            binding.etxtCC.setSelection(0)
                             binding.etxtModel.text.clear()
                             binding.etxtPlatenum.text.clear()
-                            binding.etxtType.text.clear()
+                            binding.etxtType.setSelection(0)
                             binding.etxtYear.text.clear()
                             binding.imgFront.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgBack.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgLeft.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             binding.imgRight.setImageDrawable(ContextCompat.getDrawable(this@Vehicle_add, R.drawable.ic_menu_add))
                             Toast.makeText(this@Vehicle_add, " Vehicle added successfully.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@Vehicle_add, NewApplicationActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
                         }.addOnFailureListener {
                             Toast.makeText(this@Vehicle_add, " Failed to add vehicle.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@Vehicle_add, NewApplicationActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            startActivity(intent)
                         }
                     }
                 }
@@ -634,10 +647,10 @@ class Vehicle_add : AppCompatActivity() {
                     if (data == null) {
                         return@registerForActivityResult
                     }
-                    val extras = data.extras
-                    imageBitmap = extras!!["data"] as Bitmap
+                    //val extras = data?.extras
+                    imageBitmap = data?.extras?.get("data") as Bitmap
                     file = FileUtils.createFile(
-                        this,
+                        this@Vehicle_add,
                         getString(R.string.app_name),
                         "front_car_image.png"
                     )
@@ -662,7 +675,7 @@ class Vehicle_add : AppCompatActivity() {
                     val extras = data.extras
                     imageBitmap2 = extras!!["data"] as Bitmap
                     file2 = FileUtils.createFile(
-                        this,
+                        this@Vehicle_add,
                         getString(R.string.app_name),
                         "back_car_image.png"
                     )
@@ -686,7 +699,7 @@ class Vehicle_add : AppCompatActivity() {
                     val extras = data.extras
                     imageBitmap3 = extras!!["data"] as Bitmap
                     file3 = FileUtils.createFile(
-                        this,
+                        this@Vehicle_add,
                         getString(R.string.app_name),
                         "left_car_image.png"
                     )
@@ -709,7 +722,7 @@ class Vehicle_add : AppCompatActivity() {
                     }
                     val extras = data.extras
                     imageBitmap4 = extras!!["data"] as Bitmap
-                    file4 = FileUtils.createFile(this,
+                    file4 = FileUtils.createFile(this@Vehicle_add,
                         getString(R.string.app_name),
                         "right_car_image.png"
                     )

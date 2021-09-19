@@ -127,17 +127,13 @@ class ProfileActivity : AppCompatActivity() {
             val state1 = binding.spinnerState1.getSelectedItem().toString()
             //val state :String = binding.spinnerEditState.getSelectedItem().toString()
 
-            if(name==""&&phone==""&&address=="")
+            if(name=="")
             {
-                Toast.makeText(this@ProfileActivity, "Please fill in the detail", Toast.LENGTH_LONG).show()
-            }
-            else if(name=="")
-            {
-                Toast.makeText(this@ProfileActivity, "Please insert your name.", Toast.LENGTH_LONG).show()
+                binding.txtName1.setError("Please fill in name.")
             }
             else if(phone=="")
             {
-                Toast.makeText(this@ProfileActivity, "Please insert phone number.", Toast.LENGTH_LONG).show()
+                binding.txtPhone1.setError("Please fill in phone.")
             }
             else if(state1=="New State")
             {
@@ -145,7 +141,7 @@ class ProfileActivity : AppCompatActivity() {
             }
             else if(address=="")
             {
-                Toast.makeText(this@ProfileActivity, "Please insert address.", Toast.LENGTH_LONG).show()
+                binding.txtAddress1.setError("Please fill in address.")
             }
             else
             {
@@ -167,7 +163,7 @@ class ProfileActivity : AppCompatActivity() {
 
                 }
 
-                Toast.makeText(this@ProfileActivity, dowlImg_profile.toString(),Toast.LENGTH_LONG).show()
+
 
                 Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, DashBoardActivity::class.java)

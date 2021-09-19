@@ -15,7 +15,9 @@ import my.edu.tarc.mad_assignment.databinding.ActivityCardPayBinding
 class CardPay : AppCompatActivity() {
     private lateinit var binding: ActivityCardPayBinding
     private lateinit var refUsers: DatabaseReference
+    private lateinit var refUsers1: DatabaseReference
     private lateinit var firebaseUser : FirebaseUser
+    var transID : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -26,8 +28,8 @@ class CardPay : AppCompatActivity() {
         cardFormat()
         expiryFormat()
 
-        val transID = intent.getStringExtra("transID")
-        binding.textViewTransactionIDCard.text = transID
+        transID = intent.getStringExtra("transID").toString()
+        binding.textViewTransactionIDCard.setText(transID)
 
         val toPay = intent.getStringExtra("toPay")
         binding.textViewTotal3.text = "RM ${toPay}"
@@ -36,6 +38,15 @@ class CardPay : AppCompatActivity() {
             validation()
 
         }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("paymentHistory").child(transID!!)
+        refUsers.removeValue()
+        refUsers1 = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
+        refUsers1.child("voucherUsed").child("amountDiscount").setValue("0")
+
     }
 
     private fun updateVoucherQty(){
@@ -129,31 +140,41 @@ class CardPay : AppCompatActivity() {
     }
 
     private fun validation(){
-        var card : String = binding.editTextCard.text.toString()
-        //val firstDigit = Integer.toString(card).substring(0, 1).toInt()
-        val firstDigit : Char = card.get(0)
-        val visa : String = "4"
-        val master : String = "5"
+
         var monthYear: String = binding.editTextMonthYear.text.toString()
         val myArray: List<String> = monthYear.split("/")
-        //val myArray = monthYear.split("/").toTypedArray()
-        binding.textViewError.text = ""
+        var firstDigit : Char? = null
+        val visa : String = "4"
+        val master : String = "5"
+        var card : String = binding.editTextCard.text.toString()
 
 
-        if (binding.editTextCard.text.isEmpty() || binding.editTextMonthYear.text.isEmpty() || binding.editTextCVV.text.isEmpty()) {
+        if(binding.editTextCard.text.isNotEmpty()){
+            firstDigit = card.get(0)
+        }
+
+        if (binding.editTextCard.text.isBlank() || binding.editTextMonthYear.text.isBlank() || binding.editTextCVV.text.isBlank()) {
             Toast.makeText(
                 this@CardPay,
                 "Card details cannot be empty.",
                 Toast.LENGTH_LONG
             ).show()
 
+            binding.editTextCard.setError("Please enter card number.")
+            binding.editTextMonthYear.setError("Please enter expiry date.")
+            binding.editTextCVV.setError("Please enter CVV number.")
+
+
         } else if(binding.editTextCard.text.length != 19){
+
+
             Toast.makeText(
                 this@CardPay,
                 "Invalid card number.",
                 Toast.LENGTH_LONG
             ).show()
-            binding.textViewError.text = "Card number consists of 16 digits of number."
+
+            binding.editTextCard.setError("Card number consists of 16 digits of number.")
 
 
         } else if(!firstDigit.toString().equals(visa) && !firstDigit.toString().equals(master)) {
@@ -162,18 +183,19 @@ class CardPay : AppCompatActivity() {
                 "Invalid card number.",
                 Toast.LENGTH_LONG
             ).show()
-            binding.textViewError.text = "Only VISA and Master card is accepted."
+
+            binding.editTextCard.setError("Only VISA and Master card is accepted.")
 
         } else if (myArray.get(0).toInt() > 12 || myArray.get(1).toInt() < 21) {
 
-            binding.textViewError.text = "Month must not greater than 12. \nYear must greater than current year."
+            binding.editTextMonthYear.setError("Month must not greater than 12. \nYear must greater than current year.")
 
         } else if(binding.editTextCVV.text.length != 3){
 
-            binding.textViewError.text = "Card CVV consists of 3 digits of number. \nIt available behind the card."
+            binding.editTextCVV.setError("Card CVV consists of 3 digits of number. \nIt available behind the card.")
 
         }else {
-
+            val transID = intent.getStringExtra("transID")
             Toast.makeText(
                 this@CardPay,
                 "Payment Successful.",
@@ -185,6 +207,7 @@ class CardPay : AppCompatActivity() {
             firebaseUser = FirebaseAuth.getInstance().currentUser!!
             refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
             refUsers!!.child("payment").removeValue()
+            refUsers!!.child("paymentHistory").child(transID.toString()).child("status").setValue("completed")
 
         }
     }
