@@ -90,7 +90,6 @@ class RegisterUserActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
     }
 
