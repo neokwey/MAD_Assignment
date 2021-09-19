@@ -33,7 +33,7 @@ class OfflinePay : AppCompatActivity() {
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var qrCodeIV: ImageView
     private lateinit var dataEdt: TextView
-    var transID : String = ""
+
 
 
     var bitmap: Bitmap? = null
@@ -47,8 +47,9 @@ class OfflinePay : AppCompatActivity() {
         setContentView(binding.root)
 
         //transID = Random.nextInt(1000000000)
-        transID = intent.getStringExtra("transID").toString()
+        var transID = intent.getStringExtra("transID").toString()
         binding.textViewTransactionID.text = "${transID}"
+        Toast.makeText(this@OfflinePay,transID,Toast.LENGTH_SHORT).show()
 
         val toPay = intent.getStringExtra("toPay")
         binding.textViewTotal.text = "RM ${toPay}"
@@ -67,8 +68,7 @@ class OfflinePay : AppCompatActivity() {
             refUsers =
                 FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
             refUsers!!.child("payment").removeValue()
-            refUsers!!.child("paymentHistory").child(transID.toString()).child("status")
-                .setValue("completed")
+            refUsers!!.child("paymentHistory").child(transID).child("status").setValue("completed")
             updateVoucherQty()
         }
 
@@ -100,6 +100,7 @@ class OfflinePay : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        val transID = intent.getStringExtra("transID").toString()
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
         refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("paymentHistory").child(transID!!)
         refUsers.removeValue()
