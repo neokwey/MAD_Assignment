@@ -30,6 +30,10 @@
             android:exported="true"
             android:parentActivityName=".DashBoardActivity"/>
         <activity
+            android:name=".QRCodeScanner"
+            android:exported="true"
+            android:parentActivityName=".RegisterUserActivity" />
+        <activity
             android:name=".PaymentMenu"
             android:exported="true"
             android:label="Payment Menu"
