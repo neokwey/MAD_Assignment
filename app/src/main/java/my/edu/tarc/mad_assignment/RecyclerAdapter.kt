@@ -28,15 +28,8 @@ import kotlin.collections.ArrayList
 
 class RecyclerAdapter(private val context: android.content.Context, private val vehicles: List<Vehicle>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     var refUsers: DatabaseReference?= null
-    var refUsers2: DatabaseReference?= null
     var firebaseUser : FirebaseUser? = null
-    var carId: String = ""
-    private lateinit var insuranceList: ArrayList<insurance>
-    //private val myViewModel: NewApplicationActivity by
 
-    interface CellClickListener {
-        fun onCellClickListener(data: Vehicle, mode: Int)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.vehicle_show, parent, false)

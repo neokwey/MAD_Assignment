@@ -75,18 +75,10 @@ class LoginActivity : AppCompatActivity() {
 
         if (email==""){
 
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert email.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtEmail2.setError("Please fill in email.")
         } else if(password=="") {
 
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert password.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtPass1.setError("Please enter password.")
         } else{
 
 

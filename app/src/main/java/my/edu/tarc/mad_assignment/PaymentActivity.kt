@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +29,7 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var firebaseUser : FirebaseUser
     private lateinit var paymentList: ArrayList<Payment>
     private lateinit var voucherList: ArrayList<PaymentVoucher>
-    private lateinit var quantityList : ArrayList<String>
+    private lateinit var payHistoryList : ArrayList<PaymentHistoryClass>
     private lateinit var voucherRecycleView : RecyclerView
     private var totalPay : Double = 0.0
     private var totalAmount : Double = 0.0
@@ -61,7 +62,7 @@ class PaymentActivity : AppCompatActivity() {
                 if(snapshot.exists())
                 {
                     discount = snapshot.child("amountDiscount").getValue().toString().toDouble()
-                    discount = snapshot.child("amountDiscount").getValue().toString().toDouble()
+                    //discount = snapshot.child("amountDiscount").getValue().toString().toDouble()
                     binding.textViewTotalAmountPayment.setText(totalAmount.toString())
                     totalPay = totalAmount - discount
                     val total = String.format("%.2f", totalPay)
@@ -95,26 +96,47 @@ class PaymentActivity : AppCompatActivity() {
         val payTime = LocalTime.now().toString()
         val formatterDate = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         val formatterTime = DateTimeFormatter.ISO_LOCAL_TIME
-        binding.textViewDatePayment.text = payDate.format(formatterDate)
-        binding.textViewTimePayment.text = payTime.format(formatterTime)
+        val date = payDate.format(formatterDate)
+        val time = payTime.format(formatterTime)
+        binding.textViewDatePayment.text = date
+        binding.textViewTimePayment.text = time
 
 
 
         binding.btnMakePayment.setOnClickListener {
             val total = String.format("%.2f", totalPay)
+            firebaseUser = FirebaseAuth.getInstance().currentUser!!
+            refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("paymentHistory").child(transactionID.toString())
             if(binding.textViewToPayPayment.text == "0.00")
             {
                 binding.textView29.text = "No overdue payment."
             }
             else{
                 if(binding.radioButton1.isChecked){
+                    refUsers!!.child("transactionID").setValue(transactionID)
+                    refUsers!!.child("date").setValue(date)
+                    refUsers!!.child("time").setValue(time)
+                    refUsers!!.child("totalAmount").setValue(totalAmount)
+                    refUsers!!.child("discount").setValue(discount)
+                    refUsers!!.child("totalPay").setValue(total)
+                    refUsers!!.child("paymentMethod").setValue("card")
+                    refUsers!!.child("status").setValue("incomplete")
 
                     val intent = Intent(this@PaymentActivity, CardPay::class.java)
                     intent.putExtra("transID",id)
                     intent.putExtra("toPay",total)
                     startActivity(intent)
                 }else if(binding.radioButton2.isChecked){
-                    updateVoucherQty()
+                    refUsers!!.child("transactionID").setValue(transactionID)
+                    refUsers!!.child("date").setValue(date)
+                    refUsers!!.child("time").setValue(time)
+                    refUsers!!.child("totalAmount").setValue(totalAmount)
+                    refUsers!!.child("discount").setValue(discount)
+                    refUsers!!.child("totalPay").setValue(total)
+                    refUsers!!.child("paymentMethod").setValue("offline")
+                    refUsers!!.child("status").setValue("incomplete")
+
+
                     val intent = Intent(this@PaymentActivity, OfflinePay::class.java)
                     intent.putExtra("transID",id)
                     intent.putExtra("toPay",total)
@@ -125,11 +147,12 @@ class PaymentActivity : AppCompatActivity() {
                 }
             }
 
+
         }
 
         binding.btnSelectVoucher.setOnClickListener {
+             binding.linearVoucher.visibility = View.VISIBLE
 
-            binding.linearVoucher.visibility = View.VISIBLE
         }
 
     }
@@ -176,37 +199,7 @@ class PaymentActivity : AppCompatActivity() {
 
     }
 
-    private fun updateVoucherQty(){
 
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid)
-        var voucherRef = refUsers.child("rewards").child("voucher")
-
-        refUsers.child("voucherUsed").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val key = snapshot.child("voucherId").getValue().toString()
-
-                voucherRef.child(key).child("quantity").get().addOnSuccessListener {
-                    var qty = it.value.toString().toInt()
-
-                    qty -= 1
-
-                    if(qty<=0){
-                        voucherRef.child(key).removeValue()
-                    }
-                    else{
-                        voucherRef.child(key).child("quantity").setValue(qty.toString())
-                    }
-                    refUsers.child("voucherUsed").child("amountDiscount").setValue("0")
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
     private fun retrieveAmount(){
 
         var totalPayment :Double = 0.0
@@ -239,8 +232,6 @@ class PaymentActivity : AppCompatActivity() {
 
 
     }
-
-
 
 
 

@@ -133,54 +133,26 @@ class RegisterUserActivity : AppCompatActivity() {
         val state :String = binding.spinState.getSelectedItem().toString()
         val address : String = binding.txtAddress.text.toString()
 
-        if(name==""&&password==""&&email==""&&email==""&&phone==""&&address=="")
+        if(name=="")
         {
-            val builder = AlertDialog.Builder(this)
+            binding.txtName.setError("Please fill in name.")
+        }
 
-            builder.setTitle("Please fill in the detail")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
-        }
-        else if(name=="")
-        {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert your name.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
-        }
         else if(password=="")
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert password.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtPass.setError("Please insert password.")
         }
         else if(!repass.equals(password))
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Password not match.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtConPass.setError("Password not match.")
         }
         else if (email=="")
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert email.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtEmail.setError("Please insert email.")
         }
         else if(phone=="")
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert Phone Number.")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtPhone.setError("Please insert phone number.")
         }
         else if(binding.spinState.selectedItemPosition==0)
         {
@@ -192,11 +164,7 @@ class RegisterUserActivity : AppCompatActivity() {
         }
         else if(address=="")
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Please insert your address")
-            builder.setPositiveButton(R.string.ok,
-                DialogInterface.OnClickListener { dialog, i -> dialog.cancel() })
-            builder.show()
+            binding.txtAddress.setError("Please fill in address.")
         }
 
         else{

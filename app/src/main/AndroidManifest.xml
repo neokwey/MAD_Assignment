@@ -26,20 +26,24 @@
         android:theme="@style/Theme.MAD_Assignment">
         <activity
             android:name=".PaymentHistory"
-            android:exported="true" />
+            android:label="Payment History"
+            android:exported="true"
+            android:parentActivityName=".DashBoardActivity"/>
         <activity
             android:name=".PaymentMenu"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Payment Menu"
+            android:parentActivityName=".DashBoardActivity"/>
         <activity
             android:name=".CardPay"
             android:exported="true"
             android:label="Card Payment"
-            android:parentActivityName=".DashBoardActivity" />
+            />
         <activity
             android:name=".OfflinePay"
             android:exported="true"
             android:label="Pay At 7-Eleven"
-            android:parentActivityName=".DashBoardActivity" />
+            />
         <activity
             android:name=".EmptyActivity2"
             android:exported="true"
