@@ -71,7 +71,22 @@ class RegisterUserActivity : AppCompatActivity() {
 
         }
 
+        binding.imageViewScanQR.setOnClickListener{
+            val qrReferral : Int = 0
+            val intent = Intent(this, QRCodeScanner::class.java)
+            startActivityForResult(intent, qrReferral)
+        }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            val code = data!!.getStringExtra("qrReferral")
+            binding.editTextReferral.setText(code.toString())
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     fun registerOnclick(view: android.view.View) {
