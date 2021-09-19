@@ -78,35 +78,12 @@ class PaymentActivity : AppCompatActivity() {
         })
 
 
-        /*binding.textViewTotalAmountPayment.setText(totalAmount.toString())
-        binding.textDiscountPayment.setText(discount.toString())
-        totalPay = totalAmount - discount
-        val total = String.format("%.2f", totalPay)
-        binding.textViewToPayPayment.text =  total*/
-        //change to other activity
-        /*val intent = Intent(this, ?Activity::class.java)
-        startActivity(intent)*/
+
 
         paymentList= arrayListOf<Payment>()
+
         generateTransID()
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        refUsers = FirebaseDatabase.getInstance().reference.child("customer").child(firebaseUser!!.uid).child("paymentHistory").child(transactionID!!.toString())
-        refUsers!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    generateTransID()
-                    binding.textViewTransactionIDPayment.text = "$transactionID"
-                }
-                else{
-                    binding.textViewTransactionIDPayment.text = "$transactionID"
-                }
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
-
-
+        binding.textViewTransactionIDPayment.text = "$transactionID"
         val id = binding.textViewTransactionIDPayment.text.toString()
         val payDate = LocalDate.now()
         val payTime = LocalTime.now().toString()
